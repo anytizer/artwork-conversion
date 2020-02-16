@@ -60,6 +60,7 @@ spl_autoload_register(array(new includer(__ROOT__."/store/classes"), "namespaced
 use slicing\configs;
 $configs = new configs();
 $company = $configs->section("company");
+$websites = $configs->section("websites");
 
 $concepts_artwork_path = __ROOT__."/store/concepts";
 $smarty_templates = __ROOT__."/store/smarty/templates";
@@ -79,9 +80,11 @@ $smarty->setPluginsDir(array(
 ));
 
 # Global variables
-$smarty->assign("company_name", $company["name"]);
-$smarty->assign("company_title", $company["title"]);
-$smarty->assign("company_description", $company["description"]);
+$smarty->assign("company", $company);
+$smarty->assign("websites", $websites);
+#$smarty->assign("company_name", $company["name"]);
+#$smarty->assign("company_title", $company["title"]);
+#$smarty->assign("company_description", $company["description"]);
 $smarty->assign("current_year", date("Y"));
 
 error_reporting(E_ALL|E_STRICT);
