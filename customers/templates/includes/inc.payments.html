@@ -1,0 +1,27 @@
+<h1>My Payments</h1>
+<table class="w3-table w3-bordered w3-striped w3-border">
+<thead class="w3-blue">
+<tr>
+    <th>SN</th>
+    <th>Project Name</th>
+    <th>Date</th>
+    <th>Reference</th>
+    <th>Amount</th>
+</tr>
+</thead>
+<tbody class="w3-white">
+{foreach from=$payments key="p" item="payment"}
+<tr>
+    <td>{$p+1}</td>
+    <td>{$payment->name}</td>
+    <td>{$payment->date|ymd}</td>
+    <td>{$payment->reference}</td>
+    <td>{$payment->amount|currency}</td>
+</tr>
+{foreachelse}
+<tr>
+    <td colspan="5">No payments.</td>
+</tr>
+{/foreach}
+</tbody>
+</table>

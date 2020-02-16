@@ -1,0 +1,27 @@
+<!-- Danger Zone -->
+<div class="w3-container w3-purple">
+<h2>Termination</h2>
+</div>
+{if $project->terminated != "0"}
+    <p>Reason: <strong>{$project->terminated|termination_reason}</strong></p>
+{else}
+    <p>Pick a reason to terminate this project.</p>
+    <table class="w3-table w3-bordered w3-striped w3-border">
+        <thead class="w3-pale-yellow">
+            <tr>
+                <th>Capability</th>
+                <th>Payment</th>
+                <th>Refund</th>
+                <th>Success</th>
+            </tr>
+        </thead>
+        <tbody class="w3-white">
+            <tr>
+                <td><a class="w3-btn w3-blue" href="project-terminate.php?id={$project->id}&amp;reason=1">Beyond Capacity</a></td>
+                <td><a class="w3-btn w3-red"  href="project-terminate.php?id={$project->id}&amp;reason=2">Customer Won't Pay</a></td>
+                <td><a class="w3-btn w3-yellow" href="project-terminate.php?id={$project->id}&amp;reason=3">Refund</a></td>
+                <td><a class="w3-btn w3-teal" href="project-terminate.php?id={$project->id}&amp;reason=4">Project Successful</a></td>
+            </tr>
+        </tbody>
+    </table>
+{/if}

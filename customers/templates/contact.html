@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company_name} - Contact Us</title>
+    <meta name="description" content="{$company_description}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="css/customer.css" />
+</head>
+<body class="customer-tnc">
+    <div class="w3-container w3-blue">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company_name}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="login.php" class="w3-btn w3-white">Login</a>
+                    <a href="join.php" class="w3-btn w3-white">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        {foreach $contacts as $contact}
+        <div class="w3-panel">
+            <h1>{$contact->company|safe}</h1>
+            <ul>
+                <li>Phone Number: {$contact->phone|safe}</li>
+                <li>URL: {$contact->website|safe}</li>
+                <li>Email: {$contact->email|safe}</li>
+                <li>Registration Number: {$contact->registration|safe}</li>
+                <li>Address: {$contact->address|safe}</li>
+            </ul>
+        </div>
+        {/foreach}
+    </div>
+    <div class="w3-container w3-white">
+        {include file="includes/inc.footer.html"}
+    </div>
+</body>
+</html>

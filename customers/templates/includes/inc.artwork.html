@@ -1,0 +1,40 @@
+<div class="w3-container w3-yellow">
+    <h2>Upload an Artwork</h2>
+</div>
+
+<form class="w3-container" id="project" name="project" method="post" action="upload-again.php" enctype="multipart/form-data">
+    <p>
+        <input class="w3-input" name="concepts[]" type="file" value="Upload a Concept" placeholder="concept.zip" />
+        <label class="w3-text-blue">Browse your Artwork (.zip format)</label>
+    </p>
+
+    <p>
+        <input class="w3-input" name="fullname" type="text" value="" placeholder="John Doe" />
+        <label class="w3-text-blue">Full Name (You cannot change it later)</label>
+    </p>
+
+    <p>
+        <input class="w3-input" name="email" type="email" placeholder="john.doe@example.com" />
+        <label class="w3-text-blue">Email Address (Double check it)</label>
+    </p>
+    <p class="info">You will receive a confirmation link in this email address.</p>
+
+    <h3>Agreements</h3>
+    <p class="info">By creating a project, you agree to our <a href="tnc.php">terms and conditions</a>, <a href="privacy.php">privacy policy</a> and payment requirements.</p>
+
+    <p>
+        <input type="hidden" name="MAX_FILE_SIZE" value="‭8388608‬" />
+        <input type="submit" name="submit" class="w3-btn w3-purple" value="I Agree, Create my Project" />
+    </p>
+</form>
+
+<div class="w3-padding">
+    <h3>Notes</h3>
+    <div class="info">
+        Please .zip compress your design / concept / artwork files, max. 8MB.
+        Our experts will reach you out after analyzing your file.
+        <strong>Your artwork remains your property.</strong>
+        We will convert your concept into website or application <strong>for you</strong> based on the artwork you provide, at your expense (payment).
+        <a href="about.php">Details</a>
+    </div>
+</div>

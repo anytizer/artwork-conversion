@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company_name} - {$company_title}</title>
+    <meta name="description" content="{$company_description}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-payments">
+    <div class="w3-container w3-teal">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company_name}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="logout.php" class="w3-btn w3-white">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l2 s12 w3-panel">
+                {include file="includes/inc.menus.html"}
+            </div>
+            <div class="w3-col l10 s12 w3-panel">
+                <h1>Payments Received</h1>
+                <table class="w3-table w3-bordered w3-striped w3-border">
+                <thead class="w3-teal">
+                <tr>
+                    <th>SN</th>
+                    <th>Project Name</th>
+                    <th>Budget</th>
+                    <th>Reference</th>
+                    <th>Received On</th>
+                </tr>
+                </thead>
+                <tbody class="w3-white">
+                {foreach from=$payments key="p" item="payment"}
+                <tr>
+                    <td>{$p+1}</td>
+                    <td><a href="project.php?id={$payment->project}">{$payment->name}</a></td>
+                    <td>{$payment->amount|currency}</td>
+                    <td><a href="invoice.php?id={$payment->id}">{$payment->reference}</a></td>
+                    <td>{$payment->date|ymd}</td>
+                </tr>
+                {foreachelse}
+                <tr>
+                    <td colspan="5">Payments not received.</td>
+                </tr>
+                {/foreach}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        <p>&copy; 2020 - {$current_year}, {$company_name}. All rights reserved.</p>
+    </div>
+</body>
+</html>

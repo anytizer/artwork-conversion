@@ -1,0 +1,20 @@
+<div class="w3-card-4">
+    <div class="w3-container w3-blue">
+        <h2>RealTime Statistics</h2>
+    </div>
+
+    <div class="w3-padding">
+        {foreach from=$statistics key="stat" item="statistic"}
+        <div class="w3-border w3-border-blue" style="margin: 10px 5px;">
+            <div class="w3-container w3-pale-blue">
+                <h3>{$statistic->name}</h3>
+            </div>
+            <div class="w3-padding">
+                <p><strong>{$statistic->value}</strong> | <a href="{$statistic->link}">View Details</a></p>
+            </div>
+        </div>
+        {foreachelse}
+        <p>Area to display system statistics.</p>
+        {/foreach}
+    </div>
+</div>

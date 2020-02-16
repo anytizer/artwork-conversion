@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company_name} - {$company_title}</title>
+    <meta name="description" content="{$company_description}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="css/slicing.css" />
+</head>
+<body class="customer-projects">
+    <div class="w3-container w3-purple">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company_name}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="logout.php" class="w3-btn w3-white">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l2 s12 w3-panel">
+                {include file="includes/inc.menus.html"}
+            </div>
+            <div class="w3-col l10 s12 w3-panel">
+                <h1>Projects</h1>
+                <p>Projects</p>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        <p>&copy; 2020 - {$current_year}, {$company_name}. All rights reserved.</p>
+    </div>
+</body>
+</html>

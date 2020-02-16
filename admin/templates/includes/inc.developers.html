@@ -1,0 +1,45 @@
+<h1>Developers</h1>
+<table class="w3-table w3-bordered w3-striped w3-border">
+<thead class="w3-teal">
+<tr>
+    <th>SN</th>
+    <th>Gravatar</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Active</th>
+    <th>Onboard</th>
+</tr>
+</thead>
+<tbody class="w3-white">
+{foreach from=$developers key="d" item="developer"}
+<tr>
+    <td>{$d+1}</td>
+    <td><img src="{$developer->email|gravatar}" /></td>
+    <td><a href="developer-skills.php?id={$developer->id}">{$developer->name}</a></td>
+    <td>{$developer->email}</td>
+    <td><a href="developer-flag-active.php?id={$developer->id}" class="{$developer->active|button}">Active</a></td>
+    <td><a href="developer-flag-onboarded.php?id={$developer->id}" class="{$developer->onboarded|button}">Onboard</a></td>
+</tr>
+{foreachelse}
+<tr>
+    <td colspan="6">No developers.</td>
+</tr>
+{/foreach}
+</tbody>
+</table>
+
+<h2>Onboard a Developer</h2>
+<p>Invite a trusted developer only.</p>
+<form name="onboard" method="post" action="developer-onboard.php">
+    <p>
+        <input type="text" name="developer[name]" value="" class="w3-input" />
+        <label>Full Name</label>
+    </p>
+    <p>
+        <input type="email" name="developer[email]" value="" class="w3-input" />
+        <label>Email Address</label>
+    </p>
+    <p>
+        <input type="submit" name="onboard" value="Onboard" class="w3-btn w3-teal" />
+    </p>
+</form>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company_name} - {$company_title}</title>
+    <meta name="description" content="{$company_description}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-projects">
+    <div class="w3-container w3-teal">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company_name}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="login.php" class="w3-btn w3-white">Login</a>
+                    <a href="join.php" class="w3-btn w3-white">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l2 s12 w3-panel">
+                {include file="includes/inc.menus.html"}
+            </div>
+            <div class="w3-col l10 s12 w3-panel">
+
+<h1>{$project->name}</h1>
+<table class="w3-table w3-bordered w3-striped w3-border">
+<thead class="w3-teal">
+<tr>
+    <th>Budget</th>
+    <th>Paid</th>
+    <th>Opened On</th>
+</tr>
+</thead>
+<tbody class="w3-white">
+<tr>
+    <td class="w3-yellow">{$project->budget|currency}</td>
+    <td>{$project->paid|currency}</td>
+    <td>{$project->date}</td>
+</tr>
+</tbody>
+</table>
+
+{if $project->budget}
+    <p>Do not re-estimate. Rather remind the customer for a payment.</p>
+    <p><a href="remind.php?id={$project->id}" class="w3-btn w3-teal">Remind Now</a> Be polite.</p>
+{/if}
+
+<p>&nbsp;</p>
+
+<h2>Artworks Review</h2>
+<table class="w3-table w3-teal w3-bordered w3-striped w3-border">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>File Type</th>
+            <th>File Size</th>
+        </tr>
+    </thead>
+    <tbody class="w3-white">
+        {foreach from=$artworks key="a" item="artwork"}
+        <tr>
+            <td><a href="download.php?file={$artwork->id}">{$artwork->name}</a></td>
+            <td>{$artwork->type}</td>
+            <td>{$artwork->size|filesize}</td>
+        </tr>
+        {foreachelse}
+        <tr>
+            <td colspan="3">No artworks attached. <strong>Please reject this project.</strong></td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+{if $project->terminated == "0"}
+<h2>Estimate Workload</h2>
+<p>Please review the artworks properly before you estimate.</p>
+<form name="estimate" method="post" action="estimate.php">
+    <input type="number" name="budget" size="4" min="10" max="9999" required="required" placeholder="0.00" />
+    <input type="text" name="notes" placeholder="Estimation Notes" required="required" />
+    <input type="hidden" name="project_id" value="{$project->id}" />
+    <input type="submit" name="askpayment" value="Ask Payment" class="w3-btn w3-teal" />
+</form>
+{else}
+<h2>Terminated</h2>
+<p>This project has been terminated. No further actions required.</p>
+{/if}
+
+<p>&nbsp;</p>
+
+<h2>Estimation History</h2>
+<table class="w3-table w3-bordered w3-striped w3-border">
+    <thead class="w3-teal">
+        <tr>
+            <th>Estimated On</th>
+            <th>Budget</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody class="w3-white">
+        {foreach from=$estimation_history key="eh" item="history"}
+        <tr>
+            <td>{$history->date}</td>
+            <td>{$history->budget|currency}</td>
+            <td>{$history->notes}</td>
+        </tr>
+        {foreachelse}
+        <tr>
+            <td colspan="3">No estimation history.</td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<h2>Payment History</h2>
+<table class="w3-table w3-bordered w3-striped w3-border">
+    <thead class="w3-teal">
+        <tr>
+            <th>Paid On</th>
+            <th>Reference</th>
+            <th>Budget</th>
+        </tr>
+    </thead>
+    <tbody class="w3-white">
+        {foreach from=$payment_history key="ph" item="payment"}
+        <tr>
+            <td>{$payment->date}</td>
+            <td><a href="invoice.php?id={$payment->id}">{$payment->reference}</a></td>
+            <td>{$payment->amount|currency}</td>
+        </tr>
+        {foreachelse}
+        <tr>
+            <td colspan="3">No payment history.</td>
+        </tr>
+        {/foreach}
+    </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+{include file="includes/inc.danger-zone.html"}
+
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        <div class="w3-row">
+            <div class="w3-col l6">
+                <p>&copy; 2020 - {$current_year}, {$company_name}. All rights reserved.</p>
+            </div>
+            <div class="w3-col l6">
+                <div class="w3-right">
+                    <a href="about.php" class="w3-btn w3-white">About</a>
+                    <a href="support.php" class="w3-btn w3-white">Support</a>
+                    <a href="contact.php" class="w3-btn w3-white">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

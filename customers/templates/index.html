@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company_name} - {$company_title}</title>
+    <meta name="description" content="{$company_description}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="css/customer.css" />
+</head>
+<body class="customer-index">
+    <div class="w3-container w3-blue">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company_name}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="login.php" class="w3-btn w3-white">Login</a>
+                    <a href="join.php" class="w3-btn w3-white">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l6 s12 w3-panel">
+                <div class="w3-card-4">
+                    {if $smarty.session["customer"]==""}
+                    {include file="includes/inc.artwork.html"}
+                    {else}
+                    {include file="includes/inc.artwork-only.html"}
+                    {/if}
+                </div>
+                
+                <br />
+                
+                <div class="w3-card-4">
+                    <div class="w3-container w3-blue">
+                        <h2>Open in Mobile</h2>
+                    </div>
+                    <div class="w3-padding">
+                        <p><img src="images/qr.png" class="w3-border w3-border-red" /></p>
+                        <p>Scan the image with a QR Reader.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col l6 s12 w3-panel">
+                {include file="includes/inc.statistics.html"}            
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        {include file="includes/inc.footer.html"}
+        <div class="w3-row" id="information-footer">
+            <div class="info">
+                Our website uses cookies.
+                We may NOT be GDPR compliant.
+                But we respect your privacy.
+                <a href="#" onclick="document.getElementById('information-footer').style.display='none';">Close</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

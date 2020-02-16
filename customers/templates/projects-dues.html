@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company_name} - {$company_title}</title>
+    <meta name="description" content="{$company_description}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="css/w3.css" />
+    <link rel="stylesheet" href="css/customer.css" />
+</head>
+<body class="customer-projects">
+    <div class="w3-container w3-blue">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company_name}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="login.php" class="w3-btn w3-white">Login</a>
+                    <a href="join.php" class="w3-btn w3-white">Join</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l2 s12 w3-panel">
+                {include file="includes/inc.menus.html"}
+            </div>
+            <div class="w3-col l10 s12 w3-panel">
+
+<h1>My Dues</h1>
+<table class="w3-table w3-bordered w3-striped w3-border">
+<thead class="w3-blue">
+<tr>
+    <th>SN</th>
+    <th>Pay Now</th>
+    <th>Project Name</th>
+    <th>Dues<!-- Budget --></th>
+</tr>
+</thead>
+<tbody class="w3-white">
+{foreach from=$projects key="p" item="project"}
+<tr>
+    <td>{$p+1}</td>
+    <td><a class="w3-btn w3-blue" href="project.php?id={$project->id}">Pay Now</a></td>
+    <td><a href="project.php?id={$project->id}">{$project->name}</a></td>
+    <td>{$project->budget|currency}</td>
+</tr>
+{foreachelse}
+<tr>
+    <td colspan="4">Projects not estimated. Please wait for a response.</td>
+</tr>
+{/foreach}
+</tbody>
+</table>
+<p><strong>Projects got Estimated</strong> - please make a prompt payment so that we can work out on your project.</p>
+
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        {include file="includes/inc.footer.html"}
+    </div>
+</body>
+</html>

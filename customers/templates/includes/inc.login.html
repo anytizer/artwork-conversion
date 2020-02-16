@@ -1,0 +1,18 @@
+<h1>Login</h1>
+<form name="login" method="post" action="login.php">
+    <p>
+        <input class="w3-input" name="email" value="{$login['email']}" placeholder="john.doe@example.com" type="email" />
+        <label>Email</label>
+    </p>
+    <p>
+        <input class="w3-input" name="password" placeholder="password" type="password" />
+        <label>Password</label>
+    </p>
+    <p>
+        <input class="w3-input w3-btn w3-blue" name="login" value="Login" type="submit" />
+    </p>
+</form>
+
+<div class="w3-panel w3-padding w3-yellow">
+    <p>By logging in, you agree our <a href="tnc.php">terms and conditions</a>, <a href="privacy.php">privacy policy</a> and payment requirements.</p>
+</div>
