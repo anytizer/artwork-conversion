@@ -1,0 +1,13 @@
+html {
+    overflow-y: scroll;
+}
+
+body { background-color: #FFFFFF; }
+
+div.menus {
+    list-style: none;
+}
+
+.menus p a { width: 100%; }
+
+.info { font-size: smaller; font-style: italic; }

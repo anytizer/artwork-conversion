@@ -1,0 +1,17 @@
+html {
+    overflow-y: scroll;
+}
+
+ul.menus {
+    list-style: none;
+    margin-left: -30px;
+}
+
+ul.menus li
+{
+    margin: 5px;
+}
+
+.menus a {
+    width: 100%;
+}
