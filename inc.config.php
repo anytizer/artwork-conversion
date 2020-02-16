@@ -61,6 +61,7 @@ use slicing\configs;
 $configs = new configs();
 $company = $configs->section("company");
 $websites = $configs->section("websites");
+$finance = $configs->section("finance");
 
 $concepts_artwork_path = __ROOT__."/store/concepts";
 $smarty_templates = __ROOT__."/store/smarty/templates";
@@ -82,9 +83,7 @@ $smarty->setPluginsDir(array(
 # Global variables
 $smarty->assign("company", $company);
 $smarty->assign("websites", $websites);
-#$smarty->assign("company_name", $company["name"]);
-#$smarty->assign("company_title", $company["title"]);
-#$smarty->assign("company_description", $company["description"]);
+$smarty->assign("finance", $finance);
 $smarty->assign("current_year", date("Y"));
 
 error_reporting(E_ALL|E_STRICT);

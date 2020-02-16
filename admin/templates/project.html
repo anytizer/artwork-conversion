@@ -12,7 +12,7 @@
     <div class="w3-container w3-teal">
         <div class="w3-row">
             <div class="w3-col l6 s12">
-                <h1><a href="index.php">{$company_name}</a></h1>
+                <h1><a href="index.php">{$company['name']}</a></h1>
             </div>
             <div class="w3-col l6 s12">
                 <div class="w3-right">
@@ -82,7 +82,7 @@
 
 {if $project->terminated == "0"}
 <h2>Estimate Workload</h2>
-<p>Please review the artworks properly before you estimate.</p>
+<p class="w3-text-blue">Please review the artworks properly before you estimate.</p>
 <form name="estimate" method="post" action="estimate.php">
     <input type="number" name="budget" size="4" min="10" max="9999" required="required" placeholder="0.00" />
     <input type="text" name="notes" placeholder="Estimation Notes" required="required" />
@@ -90,8 +90,8 @@
     <input type="submit" name="askpayment" value="Ask Payment" class="w3-btn w3-teal" />
 </form>
 {else}
-<h2>Terminated</h2>
-<p>This project has been terminated. No further actions required.</p>
+<h2 class="w3-text-red">Terminated</h2>
+<p>This project has been terminated. No further actions are required.</p>
 {/if}
 
 <p>&nbsp;</p>

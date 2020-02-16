@@ -28,6 +28,9 @@
     <input type="hidden" name="project" value="{$project->id}" />
     <input type="submit" name="pay" value="Pay Now" class="w3-btn w3-purple" />
     </form>
+
+    {include file="includes/inc.paypal.html"}
+
     <p><strong>Notice</strong>: Your project has been estimated. Please make a payment.</p>
     <p>If you do not agree with the price, please ask us to <a href="#">re-estimate</a>. Do not change this value.</p>
 {else}

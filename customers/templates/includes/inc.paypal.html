@@ -1,0 +1,15 @@
+<p>Pay with PayPal</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_cart" />
+<input type="hidden" name="upload" value="1" />
+<input type="hidden" name="business" value="{$finance['paypal']}" />
+<input type="hidden" name="item_name_1" value="{$project->name}" />
+<input type="hidden" name="amount_1" value="{$project->budget}" />
+<input type="hidden" name="quantity_1" value="1" />
+<input type="hidden" name="code" value="{$project->budget|md5}" />
+<input type="hidden" name="notify_url" value="{$websites['hooks']}/paypal-ipn.php" />
+<input type="hidden" name="return" value="{$websites['customer']}/thankyou.php" />
+<input type="hidden" name="cancel_return" value="{$websites['customer']}/thankyou.php" />
+<input type="hidden" name="currency_code" value="USD" />
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal" />
+</form>

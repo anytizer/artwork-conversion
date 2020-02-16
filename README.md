@@ -1,2 +1,2 @@
 # artwork-conversion
-An artwork conversion utility - a website for customer, developer and admin
+A communication tool for customer, developer and admin - to convert an artwork into website or software.
