@@ -1,1 +1,13 @@
+/nbproject/private/
+/vendor
+/phpunit/logs/testdox.txt
+/phpunit/*.cache
+/store/smarty/templates_c/*.php
+/store/concepts/*.upload
+/store/sessions/sess_*
+/store/database/*.db
+/store/database/*.db-journal
+/composer.lock
+/*.log
 /.idea
+/configs.ini
