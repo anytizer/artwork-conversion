@@ -1,0 +1,10 @@
+Dear {CUSTOMER},
+
+Please activate your customer account.
+{ACTIVATION_LINK}
+
+Then, you will be able to login and post your ideas.
+Thank you for choosing us as your software developer.
+
+Regards,
+{COMPANY} Team

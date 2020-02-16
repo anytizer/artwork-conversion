@@ -1,0 +1,9 @@
+Dear {NAME},
+You have been on-boarded!
+Thank you for choosing {COMPANY}.
+
+Please activate your account.
+{ACTIVATION_LINK}
+
+Regards,
+{COMPANY} Team
