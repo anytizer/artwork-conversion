@@ -10,10 +10,21 @@ function password_plain()
     # symbols
     # difficult
 
+    # Scrambled combinations
+    $uppercase = str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    $lowercase = str_shuffle("abcdefghijklmnopqrstuvwxyz");
+    $numeric = str_shuffle("0123456789");
+    $symbols = str_shuffle("@#\$%{}[];");
+
     /**
      * @todo Make password harder
      */
-    $plain = "password"; // .mt_rand(100, 999);
+    $plain = "";
+    $plain .= substr($uppercase, 0, mt_rand(3, 5));
+    $plain .= substr($symbols, 0, mt_rand(3, 5));
+    $plain .= substr($lowercase, 0, mt_rand(3, 5));
+    $plain .= substr($numeric, 0, mt_rand(3, 5));
+    //$plain = "password"; // .mt_rand(100, 999);
     return $plain;
 }
 
@@ -46,7 +57,8 @@ function id($id="")
  */
 require_once "vendor/autoload.php";
 
-define("__ROOT__", dirname(__FILE__));
+# define("__ROOT__", dirname(__FILE__));
+define("__ROOT__", __DIR__);
 
 ignore_user_abort(true);
 set_time_limit(0);
