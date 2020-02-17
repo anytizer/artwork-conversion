@@ -11,6 +11,8 @@ $freepages = [
     "tnc.php",
     "privacy.php",
     "contact.php",
+    "about.php",
+    "thankyou.php",
 ];
 
 if(!in_array($filename, $freepages))

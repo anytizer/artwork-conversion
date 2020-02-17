@@ -51,11 +51,7 @@ if(empty($_SESSION["customer"]))
     else
     {
         # @todo Send an email asking to activate the customer profile/email.
-        file_put_contents(__ROOT__."/activate.log", "
-http://192.168.1.120/slicing/customers/public_html/activate.php?code={$userdto->code}
-http://activate.urgentslicing.com/{$userdto->code}
-
-", FILE_APPEND);
+        file_put_contents(__ROOT__."/activate.log", "\r\n{$websites['hooks']}/activate.php?code={$userdto->code}", FILE_APPEND);
         $mailer = new email();
         $mailer->activate_customer($userdto);
     }

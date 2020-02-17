@@ -46,9 +46,7 @@ class email extends PHPMailer
         $email_template = "customer-welcome.txt";
         $text = $this->template($email_template);
 
-        $this->addAddress("slicing@bimal.org.np", "Slicing Project");
-        #$this->addReplyTo("sg@bimal.org.np", "Urgent Slicing");
-        $this->Subject = "Email from Urgent Slicing...";
+        $this->Subject = "Test Email";
         $this->Body = $html;
         $this->AltBody = $text;
 
@@ -68,24 +66,25 @@ class email extends PHPMailer
      */
     public function activate_customer(userdto $customer): bool
     {
+        global $websites;
+
         $html = $this->template("customer-welcome.html");
         $text = $this->template("customer-welcome.txt");
 
         $html = str_replace("{CUSTOMER}",  $customer->name, $html);
         $text = str_replace("{CUSTOMER}",  $customer->name, $text);
 
-        $html = str_replace("{ACTIVATION_LINK}",  "<a href='http://rpi3b/slicing/customers/public_html/activate.php?code={$customer->code}'>{$customer->code}</a>", $text);
-        $text = str_replace("{ACTIVATION_LINK}",  "http://rpi3b/slicing/customers/public_html/activate.php?code={$customer->code}", $text);
+        $html = str_replace("{ACTIVATION_LINK}",  "<a href='{$websites['hooks']}/activate.php?code={$customer->code}'>{$customer->code}</a>", $html);
+        $text = str_replace("{ACTIVATION_LINK}",  "{$websites['hooks']}/activate.php?code={$customer->code}", $text);
 
         $this->addAddress($customer->email, $customer->name);
-        #$this->addReplyTo("sg@bimal.org.np", "Urgent Slicing");
-        $this->Subject = "Email from Urgent Slicing...";
+        $this->Subject = "Customer Activation";
         $this->Body = $html;
         $this->AltBody = $text;
 
         # @todo do not SEND emails during tests
-        #$sent = $this->send();
-        $sent = false;
+        $sent = $this->send();
+        #$sent = false;
         return $sent;
     }
 }
