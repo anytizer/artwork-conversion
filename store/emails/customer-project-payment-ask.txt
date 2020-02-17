@@ -1,0 +1,14 @@
+Dear {CUSTOMER},
+
+Your project has been estimated.
+{PROJECT}
+
+Please make a payment of ${BUDGET}.
+
+You can login at below link to make a payment.
+{WEBSITE}/project.php?id={PROJECTID}
+
+Or, go to customer area, and then choose "My Dues".
+
+Regards,
+{COMPANY} Team

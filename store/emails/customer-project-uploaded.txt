@@ -1,0 +1,7 @@
+Dear {CUSTOMER},
+
+Your project has been added to the estimation queue.
+{PROJECT}
+
+Regards,
+{COMPANY} Team

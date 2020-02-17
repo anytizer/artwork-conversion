@@ -4,13 +4,19 @@ namespace admin;
 require_once "../inc.config.php";
 
 use \dtos\projectdto;
+use \slicing\email;
 use \slicing\project;
 
 $project_id = id($_POST["project_id"]);
 
 $project = new project();
 #print_r($_POST); die();
+
+// ask payment
 $estimation = $project->estimate($project_id, $_POST["budget"], $_POST["notes"]);
+
+$email = new email();
+$email->ask_payment($project_id);
 # @todo Send an email to the customer of this project
 /**
 Array

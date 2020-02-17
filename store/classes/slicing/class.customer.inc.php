@@ -88,12 +88,12 @@ WHERE
         return $row["total"] == 1;
     }
     
-    public function get($customer_id=""): userdto
+    public function single($customer_id=""): userdto
     {
         $customer_id = id($customer_id);
         $customer_active = "1";
 
-        $get_sql="SELECT * FROM customers WHERE customer_id=:customer_id AND customer_active=:customer_active;";
+        $get_sql="SELECT * FROM customers WHERE customer_id=:customer_id LIMIT 1;";
         $statement = $this->database->prepare($get_sql);
         $statement->bindParam(":customer_id", $customer_id, SQLITE3_TEXT);
         $statement->bindParam(":customer_active", $customer_active, SQLITE3_TEXT);

@@ -19,7 +19,7 @@ if(isset($_POST["login"]))
     $customer = new customer();
     if($customer->login($attempt))
     {
-        $customerdto = $customer->get($attempt->email);
+        $customerdto = $customer->single($attempt->email);
         $_SESSION["customer"] = $customerdto->id;
         
         header("Location: dashboard.php");

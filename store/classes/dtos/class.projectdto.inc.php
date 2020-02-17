@@ -4,7 +4,7 @@ namespace dtos;
 class projectdto
 {
     public $id;
-    #public $customer;
+    public $customer; // customer id
     public $name;
     public $budget;
     public $paid;

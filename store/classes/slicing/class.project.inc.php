@@ -214,7 +214,7 @@ class project extends database
         return $result;
     }
     
-    public function single($project_id="")
+    public function single($project_id=""): projectdto
     {
         # Todo bind the customer id as well
         $single_project_sql="SELECT * FROM projects WHERE project_id=:project_id LIMIT 1;";
@@ -233,6 +233,8 @@ class project extends database
             $projectdto->date = $row["project_date"];
             $projectdto->active = $row["project_active"];
             $projectdto->terminated = $row["project_terminated"];
+
+            $projectdto->customer = $row["customer_id"];
        }
  
         return $projectdto;

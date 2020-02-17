@@ -7,7 +7,7 @@ use \dtos\customerdto;
 use \slicing\customer;
 
 $customer = new customer();
-$customerdto = $customer->get($_SESSION["customer"]);
+$customerdto = $customer->single($_SESSION["customer"]);
 
 #print_r($_SESSION);
 #print_r($customerdto);
