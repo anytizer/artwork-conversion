@@ -56,6 +56,13 @@ class email extends PHPMailer
     }
 
 
+    private function replace($find=[], $content="")
+    {
+        $content = str_replace(array_keys($find), array_values($find), $content);
+        return $content;
+    }
+
+
     /**
      * Send activation link to the customer
      * @see upload.php
@@ -69,9 +76,6 @@ class email extends PHPMailer
         global $company;
         global $websites;
 
-        $html = $this->template("customer-welcome.html");
-        $text = $this->template("customer-welcome.txt");
-
         $find = array(
             "{CUSTOMER}" => $customer->name,
             "{ACTIVATION_LINK}" => "{$websites['hooks']}/activate.php?code={$customer->code}",
@@ -79,8 +83,8 @@ class email extends PHPMailer
             "{COMPANY}" => $company["name"],
         );
 
-        $html = str_replace(array_keys($find), array_values($find), $html);
-        $text = str_replace(array_keys($find), array_values($find), $text);
+        $html = $this->replace($find, $this->template("customer-welcome.html"));
+        $text = $this->replace($find, $this->template("customer-welcome.txt"));
         #die($text);
 
         $this->addAddress($customer->email, $customer->name);
@@ -102,9 +106,6 @@ class email extends PHPMailer
         $customer = new customer();
         $customerdto = $customer->single($projectdto->customer);
 
-        $html = $this->template("customer-project-uploaded.html");
-        $text = $this->template("customer-project-uploaded.txt");
-
         $find = array(
             "{CUSTOMER}" => $customerdto->name,
             "{BUDGET}" => $projectdto->budget,
@@ -112,9 +113,8 @@ class email extends PHPMailer
             "{COMPANY}" => $company["name"],
         );
 
-        $html = str_replace(array_keys($find), array_values($find), $html);
-        $text = str_replace(array_keys($find), array_values($find), $text);
-        #die($text);
+        $html = $this->replace($find, $this->template("customer-project-uploaded.html"));
+        $text = $this->replace($find, $this->template("customer-project-uploaded.txt"));
 
         $this->addAddress($customerdto->email, $customerdto->name);
         $this->Subject = "Project being estimated";
@@ -141,9 +141,6 @@ class email extends PHPMailer
         $customerdto = $customer->single($projectdto->customer);
         #print_r($customerdto); die();
 
-        $html = $this->template("customer-project-payment-ask.html");
-        $text = $this->template("customer-project-payment-ask.txt");
-
         $find = array(
             "{CUSTOMER}" => $customerdto->name,
             "{BUDGET}" => $projectdto->budget,
@@ -153,9 +150,8 @@ class email extends PHPMailer
             "{COMPANY}" => $company["name"],
         );
 
-        $html = str_replace(array_keys($find), array_values($find), $html);
-        $text = str_replace(array_keys($find), array_values($find), $text);
-        #die($text);
+        $html = $this->replace($find, $this->template("customer-project-payment-ask.html"));
+        $text = $this->replace($find, $this->template("customer-project-payment-ask.txt"));;
 
         $this->addAddress($customerdto->email, $customerdto->name);
         $this->Subject = "Project Estimated, Please pay";
