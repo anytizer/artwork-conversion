@@ -1,8 +1,8 @@
 <?php
 namespace slicing;
 
-use dtos\userdto;
-use slicing\database;
+use \dtos\userdto;
+use \slicing\database;
 
 class developer extends database
 {

@@ -1,11 +1,11 @@
 <?php
 namespace slicing;
 
-use slicing\database;
-use slicing\project;
-use slicing\developer;
-use slicing\customer;
-use slicing\fileuploader;
+use \slicing\database;
+use \slicing\project;
+use \slicing\developer;
+use \slicing\customer;
+use \slicing\fileuploader;
 
 # @todo Only on demo servers
 

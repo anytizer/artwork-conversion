@@ -1,7 +1,7 @@
 <?php
 namespace tests;
 
-use slicing\email;
+use \slicing\email;
 
 use PHPUnit\Framework\TestCase;
 

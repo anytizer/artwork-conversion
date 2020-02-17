@@ -1,7 +1,7 @@
 <?php
 namespace slicing;
 
-use slicing\database;
+use \slicing\database;
 use anytizer\guid;
 
 class hook extends database

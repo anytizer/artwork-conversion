@@ -1,7 +1,7 @@
 <?php
 namespace slicing;
 
-use dtos\userdto;
+use \dtos\userdto;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class email extends PHPMailer

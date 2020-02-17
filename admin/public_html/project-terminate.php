@@ -3,8 +3,8 @@ namespace admin;
 
 require_once "../inc.config.php";
 
-use dtos\projectdto;
-use slicing\project;
+use \dtos\projectdto;
+use \slicing\project;
 
 #$_GET["id"]="88C0A147-6DB6-A776-4236-35C2DB700D1A";
 #$_GET["reason"]="2";

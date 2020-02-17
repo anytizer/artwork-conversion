@@ -2,8 +2,8 @@
 namespace tests;
 
 use demo\provider;
-use dtos\userdto;
-use slicing\admin;
+use \dtos\userdto;
+use \slicing\admin;
 use PHPUnit\Framework\TestCase;
 
 class adminTest extends TestCase

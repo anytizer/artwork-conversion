@@ -3,8 +3,8 @@ namespace customers;
 
 require_once "../inc.config.php";
 
-use dtos\projectdto;
-use slicing\project;
+use \dtos\projectdto;
+use \slicing\project;
 
 #$_GET["id"] = "65A510FF-9423-3A73-BAB4-2883B0109830"; # @todo Remove this line
 if(empty($_GET["id"]))

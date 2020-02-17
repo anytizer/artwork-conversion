@@ -1,9 +1,9 @@
 <?php
 namespace tests;
 
-use dtos\customerdto;
-use dtos\logindto;
-use slicing\customer;
+use \dtos\customerdto;
+use \dtos\logindto;
+use \slicing\customer;
 use demo\provider;
 use PHPUnit\Framework\TestCase;
 

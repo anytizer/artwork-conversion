@@ -3,8 +3,8 @@ namespace admin;
 
 require_once "../inc.config.php";
 
-use dtos\userdto;
-use slicing\developer;
+use \dtos\userdto;
+use \slicing\developer;
 
 $userdto = new userdto();
 $userdto->id = id($_GET["id"]);
