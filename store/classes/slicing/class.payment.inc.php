@@ -1,8 +1,8 @@
 <?php
 namespace slicing;
 
-use dtos\paymentdto;
-use slicing\database;
+use \dtos\paymentdto;
+use \slicing\database;
 
 class payment extends database
 {

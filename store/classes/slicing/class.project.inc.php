@@ -1,13 +1,13 @@
 <?php
 namespace slicing;
 
-use dtos\userdto;
-use dtos\projectdto;
-use dtos\estimationdto;
-use dtos\paymentdto;
-use dtos\terminationdto;
-use dtos\filedto;
-use slicing\database;
+use \dtos\userdto;
+use \dtos\projectdto;
+use \dtos\estimationdto;
+use \dtos\paymentdto;
+use \dtos\terminationdto;
+use \dtos\filedto;
+use \slicing\database;
 use anytizer\guid;
 
 class project extends database

@@ -1,7 +1,7 @@
 <?php
 namespace admin;
 
-use slicing\email;
+use \slicing\email;
 
 require_once "../inc.config.php";
 

@@ -3,8 +3,8 @@ namespace customers;
 
 require_once "../inc.config.php";
 
-use slicing\work;
-use dtos\workdto;
+use \slicing\work;
+use \dtos\workdto;
 
 $works = (new work())->works();
 

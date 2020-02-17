@@ -3,8 +3,8 @@ namespace admin;
 
 require_once "../inc.config.php";
 
-use dtos\paymentdto;
-use slicing\payment;
+use \dtos\paymentdto;
+use \slicing\payment;
 
 $payment = new payment();
 $payments = $payment->recent_admin();

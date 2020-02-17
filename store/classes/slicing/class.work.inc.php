@@ -1,8 +1,8 @@
 <?php
 namespace slicing;
 
-use dtos\workdto;
-use slicing\database;
+use \dtos\workdto;
+use \slicing\database;
 
 class work extends database
 {

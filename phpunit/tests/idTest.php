@@ -1,8 +1,8 @@
 <?php
 namespace tests;
 
-use dtos\workdto;
-use slicing\work;
+use \dtos\workdto;
+use \slicing\work;
 use anytizer\guid;
 use PHPUnit\Framework\TestCase;
 

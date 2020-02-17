@@ -3,7 +3,7 @@ namespace admin;
 
 require_once "../inc.config.php";
 
-use slicing\project;
+use \slicing\project;
 
 $project = new project();
 $projects = $project->terminated();

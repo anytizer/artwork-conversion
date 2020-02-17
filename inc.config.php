@@ -57,7 +57,7 @@ session_start();
 use anytizer\includer;
 spl_autoload_register(array(new includer(__ROOT__."/store/classes"), "namespaced_inc_dot"));
 
-use slicing\configs;
+use \slicing\configs;
 $configs = new configs();
 $company = $configs->section("company");
 $websites = $configs->section("websites");

@@ -1,8 +1,8 @@
 <?php
 namespace tests;
 
-use dtos\projectdto;
-use slicing\project;
+use \dtos\projectdto;
+use \slicing\project;
 use PHPUnit\Framework\TestCase;
 
 class terminationTest extends TestCase

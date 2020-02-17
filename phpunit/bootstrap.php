@@ -1,6 +1,6 @@
 <?php
-use slicing\work;
-use slicing\info;
+use \slicing\work;
+use \slicing\info;
 
 require_once "../inc.config.php";
 

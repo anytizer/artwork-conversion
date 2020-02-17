@@ -1,8 +1,8 @@
 <?php
 namespace slicing;
 
-use dtos\statsdto;
-use slicing\database;
+use \dtos\statsdto;
+use \slicing\database;
 
 class stats extends database
 {

@@ -1,9 +1,9 @@
 <?php
 namespace slicing;
 
-use dtos\userdto;
-use dtos\logindto;
-use slicing\database;
+use \dtos\userdto;
+use \dtos\logindto;
+use \slicing\database;
 
 class admin extends database
 {

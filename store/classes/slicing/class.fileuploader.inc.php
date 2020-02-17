@@ -1,7 +1,7 @@
 <?php
 namespace slicing;
 
-use dtos\filedto;
+use \dtos\filedto;
 use \anytizer\guid;
 
 class fileuploader

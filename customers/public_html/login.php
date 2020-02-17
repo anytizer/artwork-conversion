@@ -3,9 +3,9 @@ namespace customers;
 
 require_once "../inc.config.php";
 
-use slicing\customer;
-use dtos\customerdto;
-use dtos\logindto;
+use \slicing\customer;
+use \dtos\customerdto;
+use \dtos\logindto;
 
 $_SESSION["customer"] = null;
 

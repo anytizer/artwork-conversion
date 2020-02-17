@@ -1,7 +1,7 @@
 <?php
 namespace demo;
 
-use dtos\userdto;
+use \dtos\userdto;
 use anytizer\guid;
 
 class provider

@@ -1,7 +1,7 @@
 <?php
 namespace phpunit;
 
-use slicing\configs;
+use \slicing\configs;
 use PHPUnit\Framework\TestCase;
 
 class configTest extends TestCase

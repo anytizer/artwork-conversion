@@ -3,8 +3,8 @@ namespace admin;
 
 require_once "../inc.config.php";
 
-use dtos\projectdto;
-use slicing\project;
+use \dtos\projectdto;
+use \slicing\project;
 
 $project_id = id($_POST["project_id"]);
 

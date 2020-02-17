@@ -1,8 +1,8 @@
 <?php
 namespace tests;
 
-use dtos\userdto;
-use slicing\developer;
+use \dtos\userdto;
+use \slicing\developer;
 use demo\provider;
 use anytizer\guid;
 use PHPUnit\Framework\TestCase;

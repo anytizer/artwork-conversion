@@ -1,8 +1,8 @@
 <?php
 namespace slicing;
 
-use dtos\infodto;
-use slicing\database;
+use \dtos\infodto;
+use \slicing\database;
 
 class info extends database
 {

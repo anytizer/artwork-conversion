@@ -1,7 +1,7 @@
 <?php
 namespace tests;
 
-use slicing\stats;
+use \slicing\stats;
 use PHPUnit\Framework\TestCase;
 
 class statisticsTest extends TestCase
