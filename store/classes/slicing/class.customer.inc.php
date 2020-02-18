@@ -18,6 +18,7 @@ class customer extends database
         {
             return false;
         }
+
         $insert_sql="INSERT INTO customers (customer_id, customer_name, customer_email, customer_password, customer_code, customer_active) VALUES (:customer_id, :customer_name, :customer_email, :customer_password, :customer_code, :customer_active);";
         
         $statement = $this->database->prepare($insert_sql);
@@ -41,6 +42,44 @@ class customer extends database
         # if email exists: return false
         $exists = false;
         return !$exists;
+    }
+
+    public function get_all_active_customers()
+    {
+        $customers = [];
+
+        $all_sql="
+        SELECT
+	c.customer_id id,
+	c.customer_name `name`,
+	c.customer_email email,
+	COUNT(*) total
+FROM customers c
+INNER JOIN projects p ON p.customer_id = c.customer_id
+GROUP BY
+	c.customer_id
+;
+        ";
+
+        $statement = $this->database->prepare($all_sql);
+        $result = $statement->execute();
+        while($row = $result->fetchArray(SQLITE3_ASSOC))
+        {
+            # @Todo DTO Conversion
+            $userdto = new userdto();
+            $userdto->id = $row["id"];
+            $userdto->name = $row["name"];
+            $userdto->email = $row["email"];
+            $userdto->password = "";
+            $userdto->code = "";
+            $userdto->active = $row["active"];
+
+            $userdto->total = $row["total"];
+
+            $customers[] = $userdto;
+        }
+
+        return $customers;
     }
     
     public function maintenance()

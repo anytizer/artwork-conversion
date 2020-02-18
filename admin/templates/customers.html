@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company['name']} - {$company['title']}</title>
+    <meta name="description" content="{$company['description']}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="{$websites['assets']}/css/w3.css" />
+    <link rel="stylesheet" href="{$websites['assets']}/css/admin.css" />
+</head>
+<body class="admin-projects">
+    <div class="w3-container w3-teal">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company['name']}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="logout.php" class="w3-btn w3-white">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l2 s12 w3-panel">
+                {include file="includes/inc.menus.html"}
+            </div>
+            <div class="w3-col l10 s12 w3-panel">
+                <h1>Customers</h1>
+                <table class="w3-table w3-bordered w3-striped w3-border">
+                <thead class="w3-teal">
+                <tr>
+                    <th>SN</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Projects</th>
+                </tr>
+                </thead>
+                <tbody class="w3-white">
+                {foreach from=$customers key="c" item="customer"}
+                <tr>
+                    <td>{$c+1}</td>
+                    <td><a href="customer.php?id={$customer->id}">{$customer->name}</a></td>
+                    <td>{$customer->email|safe}</td>
+                    <td><a href="projects.php?customer={$customer->id}">{$customer->total}</a></td>
+                </tr>
+                {foreachelse}
+                <tr>
+                    <td colspan="4">No projects.</td>
+                </tr>
+                {/foreach}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        <p>&copy; 2020 - {$current_year}, {$company['name']}. All rights reserved.</p>
+    </div>
+</body>
+</html>
