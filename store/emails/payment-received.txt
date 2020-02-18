@@ -1,6 +1,7 @@
 Dear {CUSTOMER},
-Your project is terminated.
+Your payment is received.
 {PROJECT}
+{BUDGET}
 
 Regards,
 {COMPANY} Team

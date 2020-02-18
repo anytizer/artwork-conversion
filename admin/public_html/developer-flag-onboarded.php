@@ -5,17 +5,18 @@ require_once "../inc.config.php";
 
 use \dtos\userdto;
 use \slicing\developer;
+use \slicing\email;
 
-$userdto = new userdto();
-$userdto->id = id($_GET["id"]);
-$userdto->name = null;
-$userdto->email = null;
-$userdto->password = null;
-$userdto->active = null;
-$userdto->onboarded = null;
-
+$id = id($_GET["id"]);
 $developer = new developer();
-$developer_created = $developer->onboarded($userdto);
-#$developer_emailed = $developer->invite($userdto);
+$userdto = $developer->single($id);
+
+$developer_onboarded = $developer->onboarded($userdto);
+
+if($userdto->onboarded == "0")
+{
+    $email = new email();
+    $developer_informed = $email->developer_onboarded($userdto->id);
+}
 
 header("Location: developers.php");

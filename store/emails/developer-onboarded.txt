@@ -1,9 +1,11 @@
-Dear {NAME},
+Dear {DEVELOPER},
 You have been on-boarded!
 Thank you for choosing {COMPANY}.
 
 Please activate your account.
 {ACTIVATION_LINK}
+
+By clicking the link above, you will activate your profile.
 
 Regards,
 {COMPANY} Team

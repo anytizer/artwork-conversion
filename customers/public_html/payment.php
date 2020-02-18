@@ -3,6 +3,7 @@ namespace customers;
 
 require_once "../inc.config.php";
 
+use \slicing\email;
 use \slicing\hook;
 
 #print_r($_POST);
@@ -12,6 +13,9 @@ $hook = new hook();
 
 $project_id = id($_POST["project"]);
 $hook->mark_project_paid($project_id, $_POST["budget"], "REF".mt_rand(100, 999), "Web");
+
+$email = new email();
+$email->payment_received($project_id);
 
 /**
 

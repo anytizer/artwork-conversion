@@ -13,6 +13,8 @@ $freepages = [
     "contact.php",
     "about.php",
     "thankyou.php",
+
+    "developer-activate.php",
 ];
 
 if(!in_array($filename, $freepages))

@@ -38,6 +38,39 @@ class developer extends database
         $developer_created = $result!=false;
         return $developer_created;
     }
+
+    public function single($developer_id=""): userdto
+    {
+        $select_sql="SELECT * FROM developers WHERE developer_id=:developer_id LIMIT 1;";
+
+        $statement = $this->database->prepare($select_sql);
+        $statement->bindParam(":developer_id", $developer_id, SQLITE3_TEXT);
+
+        $result = $statement->execute();
+        $row = $result->fetchArray(SQLITE3_ASSOC);
+
+        $userdto = new userdto();
+        $userdto->id = $row["developer_id"];
+        $userdto->name = $row["developer_name"];
+        $userdto->email = $row["developer_email"];
+        $userdto->password = $row["developer_password"];
+        $userdto->code = $row["developer_code"];
+        $userdto->active = $row["developer_active"];
+        $userdto->onboarded = $row["developer_onboarded"];
+
+        return $userdto;
+    }
+
+    public function activate($developer_id="", $developer_code=""): bool
+    {
+        $flag_sql="UPDATE developers SET developer_active=1, developer_onboarded=1 WHERE developer_id=:developer_id AND developer_code=:developer_code;";
+        $statement = $this->database->prepare($flag_sql);
+        $statement->bindParam(":developer_id", $developer_id, SQLITE3_TEXT);
+        $statement->bindParam(":developer_code", $developer_code, SQLITE3_TEXT);
+        $result = $statement->execute();
+
+        return $result!=false;
+    }
     
     public function recent()
     {

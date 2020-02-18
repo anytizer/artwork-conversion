@@ -49,7 +49,7 @@
 
 {if $project->budget}
     <p>Do not re-estimate. Rather remind the customer for a payment.</p>
-    <p><a href="remind.php?id={$project->id}" class="w3-btn w3-teal">Remind Now</a> Be polite.</p>
+    <p><a href="remind.php?id={$project->id}" class="w3-btn w3-teal">Remind Now</a> Please be polite.</p>
 {/if}
 
 <p>&nbsp;</p>
@@ -104,6 +104,7 @@
             <th>Estimated On</th>
             <th>Budget</th>
             <th>Notes</th>
+            <th>Remind</th>
         </tr>
     </thead>
     <tbody class="w3-white">
@@ -112,10 +113,11 @@
             <td>{$history->date}</td>
             <td>{$history->budget|currency}</td>
             <td>{$history->notes}</td>
+            <td>Remind</td>
         </tr>
         {foreachelse}
         <tr>
-            <td colspan="3">No estimation history.</td>
+            <td colspan="4">No estimation history.</td>
         </tr>
         {/foreach}
     </tbody>

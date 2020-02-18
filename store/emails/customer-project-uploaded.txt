@@ -3,5 +3,7 @@ Dear {CUSTOMER},
 Your project has been added to the estimation queue.
 {PROJECT}
 
+You will soon receive another email with a free quotation.
+
 Regards,
 {COMPANY} Team
