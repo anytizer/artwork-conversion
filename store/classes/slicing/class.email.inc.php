@@ -53,7 +53,7 @@ class email extends PHPMailer
         $sent = false;
 
         // The only point to send emails through out the application
-        if(__LIVE__)
+        if(defined("__LIVE__") && constant("__LIVE__") == true)
         {
             $sent = $this->send();
         }
