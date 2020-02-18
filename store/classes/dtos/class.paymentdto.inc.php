@@ -10,6 +10,6 @@ class paymentdto
     public $reference;
     public $from;
 
-    # Project Name @todo Rename to project name.
+    # Project Name
     public $name;
 }

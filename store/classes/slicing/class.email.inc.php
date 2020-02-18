@@ -59,21 +59,21 @@ class email extends PHPMailer
     // customer: upload.php
     /**
      * Send activation link to the customer
-     * @see upload.php
      *
      * @param userdto $customer
+     * @param string $password_plain
      * @return bool
      * @throws \PHPMailer\PHPMailer\Exception
      */
-    public function activate_customer(userdto $customer): bool
+    public function activate_customer(userdto $customer, $password_plain=""): bool
     {
         global $company;
         global $websites;
 
         $find = array(
             "{CUSTOMER}" => $customer->name,
-            "{ACTIVATION_LINK}" => "{$websites['hooks']}/activate.php?code={$customer->code}",
-            "{PASSWORD}" => $customer->password,
+            "{ACTIVATION_LINK}" => "{$websites['hooks']}/activate.php?id={$customer->id}&code={$customer->code}",
+            "{PASSWORD}" => $password_plain,
             "{COMPANY}" => $company["name"],
         );
 
@@ -86,7 +86,6 @@ class email extends PHPMailer
         $this->Body = $html;
         $this->AltBody = $text;
 
-        # @todo do not SEND emails during tests
         return $this->deliver();
     }
 
@@ -118,7 +117,6 @@ class email extends PHPMailer
         $this->Body = $html;
         $this->AltBody = $text;
 
-        # @todo do not SEND emails during tests
         return $this->deliver();
     }
 
@@ -149,7 +147,6 @@ class email extends PHPMailer
         $this->Body = $html;
         $this->AltBody = $text;
 
-        # @todo do not SEND emails during tests
         return $this->deliver();
     }
 
@@ -184,7 +181,6 @@ class email extends PHPMailer
         $this->Body = $html;
         $this->AltBody = $text;
 
-        # @todo do not SEND emails during tests
         return $this->deliver();
     }
 
@@ -211,12 +207,10 @@ class email extends PHPMailer
         $text = $this->replace($find, $this->template("project-terminated.txt"));
 
         $this->addAddress($customerdto->email, $customerdto->name);
-        #$this->addAddress($customerdto->email, $customerdto->name); # @todo Add admin email info
         $this->Subject = "Your project is terminated.";
         $this->Body = $html;
         $this->AltBody = $text;
 
-        # @todo do not SEND emails during tests
         return $this->deliver();
     }
 
@@ -243,7 +237,6 @@ class email extends PHPMailer
         $this->Body = $html;
         $this->AltBody = $text;
 
-        # @todo do not SEND emails during tests
         return $this->deliver();
     }
 }

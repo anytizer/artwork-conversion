@@ -7,8 +7,6 @@ use \slicing\developer;
 use \slicing\customer;
 use \slicing\fileuploader;
 
-# @todo Only on demo servers
-
 class maintenance extends database
 {
     public function __construct()
@@ -26,7 +24,6 @@ class maintenance extends database
 
     public function reinstall()
     {
-        // @todo Test Script to fillup the data
         $this->reinstall_table("admins");
         $this->reinstall_table("artworks");
         $this->reinstall_table("customers");
@@ -39,7 +36,6 @@ class maintenance extends database
         $this->reinstall_table("works"); // contains data
     }
     
-    # @todo Cleanup activities
     public function maintain()
     {
         $maintenance = [];

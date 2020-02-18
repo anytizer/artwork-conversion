@@ -16,15 +16,11 @@ function password_plain()
     $numeric = str_shuffle("0123456789");
     $symbols = str_shuffle("@#\$%{}[];");
 
-    /**
-     * @todo Make password harder
-     */
     $plain = "";
     $plain .= substr($uppercase, 0, mt_rand(3, 5));
     $plain .= substr($symbols, 0, mt_rand(3, 5));
     $plain .= substr($lowercase, 0, mt_rand(3, 5));
     $plain .= substr($numeric, 0, mt_rand(3, 5));
-    //$plain = "password"; // .mt_rand(100, 999);
     return $plain;
 }
 

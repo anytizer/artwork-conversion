@@ -17,7 +17,6 @@ $estimation = $project->estimate($project_id, $_POST["budget"], $_POST["notes"])
 
 $email = new email();
 $email->ask_payment($project_id);
-# @todo Send an email to the customer of this project
 /**
 Array
 (
