@@ -10,8 +10,6 @@ class payment extends database
     {
         $payments = [];
 
-        # @todo Limit to Customer ID
-        #$payments_sql="SELECT * FROM payments LIMIT 500;";
         $payments_sql="
 SELECT
     pay.*,
