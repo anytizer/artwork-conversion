@@ -10,6 +10,6 @@ class userdto
     public $code;
     public $active;
     
-    # Developer:
-    public $onboarded;
+    public $onboarded; // Developer Flag
+    public $total; // Customer's projects count
 }
