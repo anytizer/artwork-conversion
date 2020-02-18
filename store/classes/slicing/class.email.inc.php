@@ -51,8 +51,13 @@ class email extends PHPMailer
     private function deliver(): bool
     {
         $sent = false;
+
         // The only point to send emails through out the application
-        $sent = $this->send();
+        if(__LINE__)
+        {
+            $sent = $this->send();
+        }
+
         return $sent;
     }
 

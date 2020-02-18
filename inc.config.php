@@ -45,6 +45,7 @@ function id($id="")
     {
         trigger_error("Invalid ID format.");
     }
+    
     return $guid;
 }
 
@@ -55,6 +56,7 @@ require_once "vendor/autoload.php";
 
 # define("__ROOT__", dirname(__FILE__));
 define("__ROOT__", __DIR__);
+define("__LIVE__", false);
 
 ignore_user_abort(true);
 set_time_limit(0);
