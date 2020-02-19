@@ -4,7 +4,7 @@ namespace dtos;
 class filedto
 {
     public $id;
-    public $project;
+    public $project; // Project ID
     public $name;
     public $type;
     public $error;

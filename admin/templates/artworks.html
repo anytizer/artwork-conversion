@@ -42,7 +42,7 @@
                 {foreach from=$artworks key="a" item="artwork"}
                 <tr>
                     <td>{$a+1}</td>
-                    <td><a href="download.php?file={$artwork}">{$artwork}</a></td>
+                    <td><a href="download.php?id={$artwork}">{$artwork}</a></td>
                     <td>{$artwork|artworkdate}</td>
                     <td>{$artwork|artworksize|filesize}</td>
                     <td>{$artwork|orphan}</td>

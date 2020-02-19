@@ -66,7 +66,7 @@
     <tbody class="w3-white">
         {foreach from=$artworks key="a" item="artwork"}
         <tr>
-            <td><a href="download.php?file={$artwork->id}">{$artwork->name}</a></td>
+            <td><a href="download.php?id={$artwork->id}">{$artwork->name}</a></td>
             <td>{$artwork->type}</td>
             <td>{$artwork->size|filesize}</td>
         </tr>

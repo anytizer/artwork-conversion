@@ -54,25 +54,20 @@ function id($id="")
  */
 require_once "vendor/autoload.php";
 
-# define("__ROOT__", dirname(__FILE__));
-define("__ROOT__", __DIR__);
 define("__LIVE__", false);
+define("__ROOT__", __DIR__);
 
 ignore_user_abort(true);
 set_time_limit(0);
 error_reporting(E_ALL|E_STRICT);
-ini_set("log_errors", __ROOT__."/store/errors");
+ini_set("memory_limit", "16M");
+ini_set("log_errors", __ROOT__."/store/errors/errors.log");
 ini_set("session.save_path", __ROOT__."/store/sessions");
+
 session_start();
 
 use anytizer\includer;
 spl_autoload_register(array(new includer(__ROOT__."/store/classes"), "namespaced_inc_dot"));
-
-use \slicing\configs;
-$configs = new configs();
-$company = $configs->section("company");
-$websites = $configs->section("websites");
-$finance = $configs->section("finance");
 
 $concepts_artwork_path = __ROOT__."/store/concepts";
 $smarty_templates = __ROOT__."/store/smarty/templates";
@@ -92,7 +87,15 @@ $smarty->setPluginsDir(array(
 ));
 
 # Global variables
+use \slicing\configs;
+$configs = new configs();
+$company = $configs->section("company");
+$websites = $configs->section("websites");
+$finance = $configs->section("finance");
+$config = $configs->section("config");
+
 $smarty->assign("company", $company);
 $smarty->assign("websites", $websites);
 $smarty->assign("finance", $finance);
+$smarty->assign("config", $config);
 $smarty->assign("current_year", date("Y"));
