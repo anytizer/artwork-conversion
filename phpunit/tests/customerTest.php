@@ -48,7 +48,11 @@ class customerTest extends TestCase
         // $customer->activate($link_id);
         // simulate email link clicked
         // activate.php?customer=ID&code=CODE
-        #$this->markTestIncomplete();
         $this->assertTrue($activated);
+    }
+
+    public function testLoginACustomer()
+    {
+        $this->markTestIncomplete();
     }
 }
