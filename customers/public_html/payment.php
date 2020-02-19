@@ -9,13 +9,21 @@ use \slicing\hook;
 #print_r($_POST);
 # payment hook to be called
 
-$hook = new hook();
+//if(__LIVE__)
+{
+    $hook = new hook();
 
-$project_id = id($_POST["project"]);
-$hook->mark_project_paid($project_id, $_POST["budget"], "REF".mt_rand(100, 999), "Web");
+    $project_id = id($_POST["project"]);
+    $hook->mark_project_paid($project_id, $_POST["budget"], "REF".mt_rand(100, 999), "Web");
 
-$email = new email();
-$email->payment_received($project_id);
+    $email = new email();
+    $email->payment_received($project_id);
+}
+//else
+{
+    // @todo Fix the live mode hooks
+    // Live mode should use IPN Hook.
+}
 
 /**
 

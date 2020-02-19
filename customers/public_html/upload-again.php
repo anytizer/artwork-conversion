@@ -20,7 +20,7 @@ if(!empty($_FILES[$fname]))
 else
 {
     #print_r($_FILES[$fname]);
-    die("Artwork not uploaded...");
+    die("Artwork not uploaded Or, too big file.");
 }
 
 $projectdto = new projectdto();

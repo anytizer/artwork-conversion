@@ -20,16 +20,12 @@
 
 {if $project->budget}
     <h2 class="w3-purple w3-padding">Make a Payment</h2>
-    <form name="payment" method="post" action="payment.php">
-    USD $
-    <input type="number" name="budget" size="6" maxlength="6" value="{$project->budget}" readonly="readonly" placeholder="0.00" style="width: 100px;" />
-    <!-- @todo Introduce better protection code -->
-    <input type="hidden" name="code" value="{$project->budget|md5}" />
-    <input type="hidden" name="project" value="{$project->id}" />
-    <input type="submit" name="pay" value="Pay Now" class="w3-btn w3-purple" />
-    </form>
 
-    {include file="includes/inc.paypal.html"}
+    {if $smarty.const.__LIVE__ == false}
+        {include file="includes/inc.pay-instantly.html"}
+    {else}
+        {include file="includes/inc.paypal.html"}
+    {/if}
 
     <p><strong>Notice</strong>: Your project has been estimated. Please make a payment.</p>
     <p>If you do not agree with the price, please ask us to <a href="#">re-estimate</a>. Do not change this value.</p>

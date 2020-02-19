@@ -15,7 +15,7 @@ $artworks = [];
 $fname = "concepts";
 if(empty($_FILES[$fname]))
 {
-    die("Artwork not uploaded...");
+    die("Artwork not uploaded Or, too big file.");
 }
 
 if(!$_POST["email"])

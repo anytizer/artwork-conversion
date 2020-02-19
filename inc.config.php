@@ -60,7 +60,8 @@ define("__LIVE__", false);
 
 ignore_user_abort(true);
 set_time_limit(0);
-
+error_reporting(E_ALL|E_STRICT);
+ini_set("log_errors", __ROOT__."/store/errors");
 ini_set("session.save_path", __ROOT__."/store/sessions");
 session_start();
 
@@ -95,5 +96,3 @@ $smarty->assign("company", $company);
 $smarty->assign("websites", $websites);
 $smarty->assign("finance", $finance);
 $smarty->assign("current_year", date("Y"));
-
-error_reporting(E_ALL|E_STRICT);

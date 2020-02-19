@@ -60,6 +60,7 @@ GROUP BY
 	c.customer_id
 ;
         ";
+        # $all_sql = "SELECT c.customer_id id, c.customer_name `name`, c.customer_email email, 0 total FROM customers c;";
 
         $statement = $this->database->prepare($all_sql);
         $result = $statement->execute();
