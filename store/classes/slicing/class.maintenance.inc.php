@@ -32,6 +32,7 @@ class maintenance extends database
         $this->reinstall_table("info"); // contains data
         $this->reinstall_table("payments");
         $this->reinstall_table("projects");
+        $this->reinstall_table("statuses"); // contains data
         $this->reinstall_table("terminations");
         $this->reinstall_table("works"); // contains data
     }

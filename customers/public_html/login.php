@@ -9,7 +9,6 @@ use \dtos\logindto;
 
 $_SESSION["customer"] = null;
 
-#print_r($_POST); die();
 if(isset($_POST["login"]))
 {
     $attempt = new logindto();
@@ -19,10 +18,18 @@ if(isset($_POST["login"]))
     $customer = new customer();
     if($customer->login($attempt))
     {
-        $customerdto = $customer->single($attempt->email);
+        #die("Password matched");
+        $customerdto = $customer->details_by_email($attempt->email);
+        #print_r($customerdto);
+        #die();
         $_SESSION["customer"] = $customerdto->id;
         
         header("Location: dashboard.php");
+        die();
+    }
+    else
+    {
+        die("Login failed.");
     }
 }
 

@@ -63,7 +63,7 @@ error_reporting(E_ALL|E_STRICT);
 ini_set("memory_limit", "16M");
 ini_set("log_errors", __ROOT__."/store/errors/errors.log");
 ini_set("session.save_path", __ROOT__."/store/sessions");
-
+date_default_timezone_set("America/Edmonton");
 session_start();
 
 use anytizer\includer;

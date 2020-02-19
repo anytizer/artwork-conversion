@@ -58,9 +58,8 @@ FROM customers c
 INNER JOIN projects p ON p.customer_id = c.customer_id
 GROUP BY
 	c.customer_id
-;
-        ";
-        # $all_sql = "SELECT c.customer_id id, c.customer_name `name`, c.customer_email email, 0 total FROM customers c;";
+;";
+        $all_sql = "SELECT c.customer_id id, c.customer_name `name`, c.customer_email email, 0 total FROM customers c;";
 
         $statement = $this->database->prepare($all_sql);
         $result = $statement->execute();
@@ -120,12 +119,21 @@ WHERE
         $statement->bindParam(":customer_email", $login->email, SQLITE3_TEXT);
         $statement->bindParam(":customer_active", $customer_active, SQLITE3_TEXT);
         $result = $statement->execute();
-        
+
         # hash match
         # AND customer_password=:customer_password
 
         $row = $result->fetchArray(SQLITE3_ASSOC);
-        return $row["total"] == 1;
+
+        $password_verified = false;
+        if($row["total"] == 1)
+        {
+            $customerdto = $this->details_by_email($login->email);
+            //print_r($customerdto);
+            $password_verified = password_verify($login->password, $customerdto->password);
+        }
+
+        return $password_verified;
     }
     
     public function single($customer_id=""): userdto
@@ -142,6 +150,30 @@ WHERE
         $row = $result->fetchArray(SQLITE3_ASSOC);
         #print_r($row);
         
+        $userdto = new userdto();
+        $userdto->id = $row["customer_id"];
+        $userdto->name = $row["customer_name"];
+        $userdto->email = $row["customer_email"];
+        $userdto->password = $row["customer_password"];
+        $userdto->code = $row["customer_code"];
+        $userdto->active = $row["customer_active"];
+
+        return $userdto;
+    }
+
+    # For logged in customers
+    public function details_by_email($customer_email=""): userdto
+    {
+        $customer_active = "1";
+
+        $get_sql="SELECT * FROM customers WHERE customer_email=:customer_email AND customer_active=:customer_active LIMIT 1;";
+        $statement = $this->database->prepare($get_sql);
+        $statement->bindParam(":customer_email", $customer_email, SQLITE3_TEXT);
+        $statement->bindParam(":customer_active", $customer_active, SQLITE3_TEXT);
+        $result = $statement->execute();
+
+        $row = $result->fetchArray(SQLITE3_ASSOC);
+
         $userdto = new userdto();
         $userdto->id = $row["customer_id"];
         $userdto->name = $row["customer_name"];
