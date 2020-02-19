@@ -81,5 +81,6 @@ $project->attach_artwork($projectdto, $artworks);
 # Login the new* customer immediately
 # Even though the customer has NOT activated email link
 $_SESSION["customer"] = $userdto->id;
+$_SESSION["name"] = $userdto->name;
 
 header("Location: projects-recent.php");

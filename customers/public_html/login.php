@@ -23,7 +23,8 @@ if(isset($_POST["login"]))
         #print_r($customerdto);
         #die();
         $_SESSION["customer"] = $customerdto->id;
-        
+        $_SESSION["name"] = $customerdto->name;
+
         header("Location: dashboard.php");
         die();
     }
