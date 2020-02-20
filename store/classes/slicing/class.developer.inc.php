@@ -21,7 +21,7 @@ class developer extends database
         return $result;
     }
 
-    public function create(userdto $developer)
+    public function create(userdto $developer): bool
     {
         $insert_sql="INSERT INTO developers (developer_id, developer_name, developer_email, developer_password, developer_code, developer_active, developer_onboarded) VALUES (:developer_id, :developer_name, :developer_email, :developer_password, :developer_code, :developer_active, :developer_onboarded);";
         
