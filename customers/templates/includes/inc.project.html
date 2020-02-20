@@ -24,7 +24,7 @@
             Please wait until your project is (re)estimated...
         </p>
         {else}
-            <p>Wait until your project is estimated, definitely...</p>
+            <p>Please wait until your project is estimated, definitely...</p>
             <p>I am in a hurry! <a href="#">Please estimate it faster!</a></p>
         {/if}
     {/if}
@@ -82,12 +82,12 @@
 <br />
 <h3>Additional Attachments</h3>
 <form name="upload" method="post" action="upload-attachment.php" enctype="multipart/form-data">
-    <input type="file" name="concepts[]" />
+    <input type="file" name="concepts[]" class="w3-input" />
     <input type="hidden" name="project" value="{$project->id}" />
-    <input type="submit" name="upload" value="Re-Upload" class="w3-btn w3-blue" />
+    <input type="submit" name="upload" value="Attach" class="w3-btn w3-blue" />
 </form>
 
-<p>Please inform your project manager after you upload a new file.</p>
+<p>Please inform your project manager after you attach a new file.</p>
 
 <p>&nbsp;</p>
 
