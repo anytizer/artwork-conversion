@@ -1,28 +1,34 @@
 <h1>{$project->name}</h1>
 
-{if $project->budget}
-    <h2 class="w3-purple w3-padding">Make a Payment</h2>
-
-    {if $smarty.const.__LIVE__ == false}
-        <p>Demo Mode: Instant Payment Notification</p>
-        {include file="includes/inc.pay-instantly.html"}
-    {else}
-        <h3>Pay with PayPal {$project->budget|currency}</h3>
-        {include file="includes/inc.paypal.html"}
-    {/if}
-
-    <p><strong>Notice</strong>: Your project has been estimated. Please make a payment for this installment.</p>
-    <p>If you do not agree with the price, please ask us to <a href="#">re-estimate</a>. Do not change this amount.</p>
+{if $project->terminated != "0"}
+<p>Project Terminated. Reason: {$project->terminated|termination_reason}.</p>
 {else}
-    {if $project->paid}
+
+    {if $project->budget}
+        <h2 class="w3-purple w3-padding">Make a Payment</h2>
+
+        {if $smarty.const.__LIVE__ == false}
+            <p>Demo Mode: Instant Payment Notification</p>
+            {include file="includes/inc.pay-instantly.html"}
+        {else}
+            <h3>Pay with PayPal {$project->budget|currency}</h3>
+            {include file="includes/inc.paypal.html"}
+        {/if}
+
+        <p><strong>Notice</strong>: Your project has been estimated. Please make a payment for this installment.</p>
+        <p>If you do not agree with the price, please ask us to <a href="#">re-estimate</a>. Do not change this amount.</p>
+    {else}
+        {if $project->paid}
         <p class="w3-text-green">
             It seems that you have paid at least one installment.
             Please wait until your project is (re)estimated...
         </p>
-    {else}
-        <p>Wait until your project is estimated, definitely...</p>
-        <p>I am in a hurry! <a href="#">Please estimate it faster!</a></p>
+        {else}
+            <p>Wait until your project is estimated, definitely...</p>
+            <p>I am in a hurry! <a href="#">Please estimate it faster!</a></p>
+        {/if}
     {/if}
+
 {/if}
 
 <p>&nbsp;</p>
@@ -81,7 +87,7 @@
     <input type="submit" name="upload" value="Re-Upload" class="w3-btn w3-blue" />
 </form>
 
-<p>Your upload may remain un-noticed. Inform us after you upload a file.</p>
+<p>Please inform your project manager after you upload a new file.</p>
 
 <p>&nbsp;</p>
 

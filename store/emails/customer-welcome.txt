@@ -3,6 +3,7 @@ Dear {CUSTOMER},
 Please activate your customer account.
 {ACTIVATION_LINK}
 
+Your email address is: {EMAIL}
 Your password is: {PASSWORD}
 
 Then, you will be able to login and post your ideas.

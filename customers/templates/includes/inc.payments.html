@@ -13,7 +13,7 @@
 {foreach from=$payments key="p" item="payment"}
 <tr>
     <td>{$p+1}</td>
-    <td>{$payment->name}</td>
+    <td><a href="project.php?id={$payment->project}">{$payment->name}</a></td>
     <td>{$payment->date|ymd}</td>
     <td>{$payment->reference}</td>
     <td>{$payment->amount|currency}</td>

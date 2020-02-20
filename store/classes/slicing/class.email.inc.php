@@ -78,6 +78,7 @@ class email extends PHPMailer
         $find = array(
             "{CUSTOMER}" => $customer->name,
             "{ACTIVATION_LINK}" => "{$websites['hooks']}/activate.php?id={$customer->id}&code={$customer->code}",
+            "{EMAIL}" => $customer->email,
             "{PASSWORD}" => $password_plain,
             "{COMPANY}" => $company["name"],
         );
@@ -87,7 +88,7 @@ class email extends PHPMailer
         #die($text);
 
         $this->addAddress($customer->email, $customer->name);
-        $this->Subject = "Customer - Activation Required";
+        $this->Subject = "Customer Activation Required";
         $this->Body = $html;
         $this->AltBody = $text;
 

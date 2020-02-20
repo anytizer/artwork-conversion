@@ -14,11 +14,13 @@ $password_encrypted = password($password_plain);
 </head>
 <body>
 <div class="wrapper">
-    <div class="w3-black w3-padding">
+    <div class="w3-black w3-padding">|
         <a class="w3-btn w3-blue" href="customers/public_html/">Customer</a> |
         <a class="w3-btn w3-teal" href="admin/public_html/">Admin</a> |
         <a class="w3-btn w3-purple" href="developer/public_html/">Developer</a> |
-        <a class="w3-btn w3-yellow" href="info.php">PHP Info</a>
+        <a class="w3-btn w3-yellow" href="info.php">PHP Info</a> |
+        <a class="w3-btn w3-yellow" href="messages.log">Messages</a> |
+        <a class="w3-btn w3-red" href="autolog.php">AutoLog</a> |
     </div>
     <div class="w3-padding">
         <strong>Server Time</strong>: <?php echo date("Y-m-d H:i:s"); ?><br />

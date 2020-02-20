@@ -26,12 +26,12 @@ if(isset($_POST["login"]))
         $_SESSION["customer"] = $customerdto->id;
         $_SESSION["name"] = $customerdto->name;
 
-        header("Location: dashboard.php");
+        header("Location: {$websites['customer']}/dashboard.php");
         die();
     }
     else
     {
-        # die("Login failed.");
+        die("Login failed.");
     }
 }
 

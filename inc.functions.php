@@ -14,7 +14,7 @@ function password_plain()
     $uppercase = str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     $lowercase = str_shuffle("abcdefghijklmnopqrstuvwxyz");
     $numeric = str_shuffle("0123456789");
-    $symbols = str_shuffle("@#\$%{}[];");
+    $symbols = str_shuffle("@#\$%{}[];!?");
 
     $plain = "";
     $plain .= substr($uppercase, 0, mt_rand(3, 5));
@@ -48,4 +48,3 @@ function id($id="")
     
     return $guid;
 }
-

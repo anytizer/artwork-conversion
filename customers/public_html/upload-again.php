@@ -12,7 +12,7 @@ use anytizer\guid;
 
 $artworks = [];
 $fname = "concepts";
-if(!empty($_FILES[$fname]))
+if(!empty($_FILES[$fname]["name"][0]))
 {
     $fu = new fileuploader();
     $artworks = $fu->upload($fname, $concepts_artwork_path);

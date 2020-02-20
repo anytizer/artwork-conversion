@@ -18,6 +18,11 @@ if(empty($_FILES[$fname]))
     die("Artwork not uploaded Or, too big file.");
 }
 
+if(empty($_FILES[$fname]["name"][0]))
+{
+    die("Artwork not uploaded Or, too big file.");
+}
+
 if(!$_POST["email"])
 {
     die("Missing email address.");
