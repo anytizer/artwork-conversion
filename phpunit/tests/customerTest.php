@@ -44,7 +44,7 @@ class customerTest extends TestCase
         $customer = new customer();
         $customer_created = $customer->create($customerdto);
         
-        $activated = $customer->activate($customerdto->email, $customerdto->code);
+        $activated = $customer->activate($customerdto->id, $customerdto->code);
         // $customer->activate($link_id);
         // simulate email link clicked
         // activate.php?customer=ID&code=CODE

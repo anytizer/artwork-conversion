@@ -19,7 +19,7 @@ class loginTest extends TestCase
         
         $customer = new customer();
         $customer_created = $customer->create($customerdto);
-        $customer_activated = $customer->activate($customerdto->email, $customerdto->code);
+        $customer_activated = $customer->activate($customerdto->id, $customerdto->code);
         
         $attempt = new logindto();
         $attempt->email = $customerdto->email;

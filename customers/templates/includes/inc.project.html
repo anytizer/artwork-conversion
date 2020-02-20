@@ -1,43 +1,25 @@
 <h1>{$project->name}</h1>
-<table class="w3-table w3-bordered w3-striped w3-border">
-<thead class="w3-blue">
-<tr>
-    <th>Dues<!-- Budget --></th>
-    <th>Paid</th>
-    <th>Opened On</th>
-</tr>
-</thead>
-<tbody class="w3-white">
-<tr>
-    <td class="w3-yellow">{$project->budget|currency}</td>
-    <td>{$project->paid|currency}</td>
-    <td>{$project->date|ymd}</td>
-</tr>
-</tbody>
-</table>
-
-<p>&nbsp;</p>
 
 {if $project->budget}
     <h2 class="w3-purple w3-padding">Make a Payment</h2>
 
     {if $smarty.const.__LIVE__ == false}
+        <p>Demo Mode: Instant Payment Notification</p>
         {include file="includes/inc.pay-instantly.html"}
     {else}
+        <h3>Pay with PayPal {$project->budget|currency}</h3>
         {include file="includes/inc.paypal.html"}
     {/if}
 
-    <p><strong>Notice</strong>: Your project has been estimated. Please make a payment.</p>
-    <p>If you do not agree with the price, please ask us to <a href="#">re-estimate</a>. Do not change this value.</p>
+    <p><strong>Notice</strong>: Your project has been estimated. Please make a payment for this installment.</p>
+    <p>If you do not agree with the price, please ask us to <a href="#">re-estimate</a>. Do not change this amount.</p>
 {else}
     {if $project->paid}
-        <h2>Payment Already Made?</h2>
         <p class="w3-text-green">
             It seems that you have paid at least one installment.
             Please wait until your project is (re)estimated...
         </p>
     {else}
-        <h2>Please wait for a Payment</h2>
         <p>Wait until your project is estimated, definitely...</p>
         <p>I am in a hurry! <a href="#">Please estimate it faster!</a></p>
     {/if}
@@ -45,10 +27,30 @@
 
 <p>&nbsp;</p>
 
+<table class="w3-table w3-bordered w3-striped w3-border">
+    <thead class="w3-blue">
+    <tr>
+        <th>Dues<!-- Budget --></th>
+        <th>Paid</th>
+        <th>Opened On</th>
+    </tr>
+    </thead>
+    <tbody class="w3-white">
+    <tr>
+        <td class="w3-yellow">{$project->budget|currency}</td>
+        <td>{$project->paid|currency}</td>
+        <td>{$project->date|ymd}</td>
+    </tr>
+    </tbody>
+</table>
+
+<p>&nbsp;</p>
+
 <h2>Artworks Review</h2>
 <table class="w3-table w3-bordered w3-striped w3-border">
     <thead class="w3-blue">
         <tr>
+            <th>SN</th>
             <th>File Name</th>
             <th>File Type</th>
             <th>File Size</th>
@@ -57,13 +59,15 @@
     <tbody class="w3-white">
         {foreach from=$artworks key="a" item="artwork"}
         <tr>
-            <td><a href="download.php?file={$artwork->id}">{$artwork->name}</a></td>
+            <!-- download.php?file={$artwork->id} -->
+            <td>{$a+1}</td>
+            <td><strong>{$artwork->name}</strong></td>
             <td>{$artwork->type}</td>
             <td>{$artwork->size|filesize}</td>
         </tr>
         {foreachelse}
         <tr>
-            <td colspan="3">No artworks attached. <strong>Your project may be rejected.</strong></td>
+            <td colspan="4">No artworks attached. <strong>Your project may be rejected.</strong></td>
         </tr>
         {/foreach}
     </tbody>
@@ -76,6 +80,8 @@
     <input type="hidden" name="project" value="{$project->id}" />
     <input type="submit" name="upload" value="Re-Upload" class="w3-btn w3-blue" />
 </form>
+
+<p>Your upload may remain un-noticed. Inform us after you upload a file.</p>
 
 <p>&nbsp;</p>
 

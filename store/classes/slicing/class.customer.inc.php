@@ -87,22 +87,25 @@ GROUP BY
         //
     }
     
-    public function activate($customer_email="", $customer_code=""): bool
+    public function activate($customer_id="", $customer_code=""): bool
     {
         # @ToDo bind to single transaction
         # @todo Reset the code
         $customer_active = "1";
+        $customer_new_code = md5(password_plain());
+
         $activate_sql="
 UPDATE customers SET
     customer_active=:customer_active,
     customer_code=:customer_new_code
 WHERE
-    customer_email=:customer_email
+    -- customer_email=:customer_email
+    customer_id=:customer_id
     AND customer_code=:customer_code
 ;";
-        $customer_new_code = md5(password_plain());
         $statement = $this->database->prepare($activate_sql);
-        $statement->bindParam(":customer_email", $customer_email, SQLITE3_TEXT);
+        #$statement->bindParam(":customer_email", $customer_email, SQLITE3_TEXT);
+        $statement->bindParam(":customer_id", $customer_id, SQLITE3_TEXT);
         $statement->bindParam(":customer_new_code", $customer_new_code, SQLITE3_TEXT);
         $statement->bindParam(":customer_code", $customer_code, SQLITE3_TEXT);
         $statement->bindParam(":customer_active", $customer_active, SQLITE3_TEXT);

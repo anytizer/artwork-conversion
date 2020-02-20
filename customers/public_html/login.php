@@ -8,6 +8,7 @@ use \dtos\customerdto;
 use \dtos\logindto;
 
 $_SESSION["customer"] = null;
+$_SESSION["name"] = null;
 
 if(isset($_POST["login"]))
 {
@@ -30,7 +31,7 @@ if(isset($_POST["login"]))
     }
     else
     {
-        die("Login failed.");
+        # die("Login failed.");
     }
 }
 

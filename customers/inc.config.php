@@ -14,7 +14,7 @@ $freepages = [
     "about.php",
     "thankyou.php",
 
-    "developer-activate.php",
+    "activate.php",
 ];
 
 if(!in_array($filename, $freepages))
