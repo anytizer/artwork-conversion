@@ -78,4 +78,16 @@ class provider
         
         return $userdto;
     }
+
+    public function statuses()
+    {
+        $statuses = [
+            "New Project",
+            "In Dues",
+            "Paid",
+            "Terminated",
+        ];
+
+        return $statuses;
+    }
 }
