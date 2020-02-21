@@ -1,12 +1,23 @@
 <?php
+define("__ROOT__", __DIR__);
+
 /**
  * Common file for admin, customers and developers, cron and hooks.
  */
 require_once "inc.functions.php";
 require_once "vendor/autoload.php";
 
-define("__LIVE__", false);
-define("__ROOT__", __DIR__); # dirname(__FILE__); # Do not change it
+use anytizer\includer;
+spl_autoload_register(array(new includer(__ROOT__."/store/classes"), "namespaced_inc_dot"));
+
+# Global variables
+use \slicing\configs;
+$configs = new configs();
+$company = $configs->section("company");
+$websites = $configs->section("websites");
+$finance = $configs->section("finance");
+$config = $configs->section("config");
+define("__LIVE__", $config["live"]==="true");
 
 date_default_timezone_set("America/Edmonton");
 error_reporting(E_ALL|E_STRICT);
@@ -21,9 +32,6 @@ ini_set("post_max_size", "8M");
 ini_set("session.save_path", __ROOT__."/store/sessions");
 set_time_limit(60);
 session_start();
-
-use anytizer\includer;
-spl_autoload_register(array(new includer(__ROOT__."/store/classes"), "namespaced_inc_dot"));
 
 $concepts_artwork_path = __ROOT__."/store/concepts";
 $smarty_templates = __ROOT__."/store/smarty/templates";
@@ -42,16 +50,11 @@ $smarty->setPluginsDir(array(
     # "vendor/smarty/smarty/libs/plugins",
 ));
 
-# Global variables
-use \slicing\configs;
-$configs = new configs();
-$company = $configs->section("company");
-$websites = $configs->section("websites");
-$finance = $configs->section("finance");
-$config = $configs->section("config");
-
+/**
+ * Assign all of configs for templates
+ */
 $smarty->assign("company", $company);
 $smarty->assign("websites", $websites);
 $smarty->assign("finance", $finance);
 $smarty->assign("config", $config);
-$smarty->assign("current_year", date("Y"));
+#$smarty->assign("current_year", date("Y"));
