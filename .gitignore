@@ -16,3 +16,4 @@
 /store/smarty/templates_c/*.php
 /vendor
 /python/
+/store/cookie/*.log

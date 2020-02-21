@@ -1,0 +1,8 @@
+!#/bin/sh
+
+git pull
+
+composer update
+
+chmod -R 777 store/
+sudo chown www-data:www-data database/slicing.db
