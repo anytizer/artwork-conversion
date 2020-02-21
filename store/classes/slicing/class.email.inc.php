@@ -231,7 +231,7 @@ class email extends PHPMailer
 
         $find = array(
             "{DEVELOPER}" => $developerdto->name,
-            "{ACTIVATION_LINK}" => "{$websites['customer']}/developer-activate.php?id={$developerdto->id}&code={$developerdto->code}",
+            "{ACTIVATION_LINK}" => "{$websites['developer']}/activate.php?id={$developerdto->id}&code={$developerdto->code}",
             "{COMPANY}" => $company["name"],
         );
 

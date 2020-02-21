@@ -1,17 +1,18 @@
 <?php
-namespace customers;
+namespace developer;
 
 use \slicing\developer;
 
 require_once "../inc.config.php";
 
 $id = id($_GET["id"]);
-$code = id($_GET["code"]);
+$code = $_GET["code"];
 
 $developer = new developer();
+$developerdto = $developer->single($id);
 if($developer->activate($id, $code))
 {
-    $_SESSION["customer"] = $id;
+    $_SESSION["developer"] = $developerdto->id;
     header("Location: profile.php");
 }
 else

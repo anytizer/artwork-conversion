@@ -4,6 +4,20 @@ Your project has been added to the estimation queue.
 {PROJECT}
 
 You will soon receive another email with a free quotation.
+Please note that it is a manual process and may take a little time.
+
+Our project manager will review your uploads.
+If you would still want to supply additional files,
+please login into customer area and re-upload.
+
+Estimation Process:
+Your first estimation is always a small amount to set the project go into development.
+To complete a project, your estimations will be done in installments of small amounts.
+
+We hope, you will cooperate with the payment after your project gets estimated.
+
+We value your project.
+Thank you for choosing us as your software development partner.
 
 Regards,
 {COMPANY} Team
