@@ -16,3 +16,4 @@
 /*.sql
 /autolog.php
 /store/errors/*.log
+/autolog.ini

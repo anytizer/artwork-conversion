@@ -9,6 +9,8 @@ class terminationTest extends TestCase
 {
     public function testProjectTermination()
     {
+        $reason=1;
+
         $projectdto = new projectdto();
         $projectdto->id = "545AF421-B192-EA82-6F88-0EB61D5F3AF4";
         #$projectdto->customer = null;
@@ -20,7 +22,7 @@ class terminationTest extends TestCase
         $projectdto->terminated = null;
 
         $project = new project();
-        $terminated = $project->terminate($projectdto);
+        $terminated = $project->terminate($projectdto, $reason);
 
         $this->AssertTrue($terminated);
     }

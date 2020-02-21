@@ -26,7 +26,7 @@ class adminTest extends TestCase
         $userdto->code = $code;
         $userdto->active = "0";
         
-        $userdto->onboarded = "0";
+        $userdto->onboarded = "0"; // optional for admin
 
         $admin = new admin();
         $admin_created = $admin->create($userdto);

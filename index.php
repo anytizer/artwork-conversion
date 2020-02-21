@@ -19,7 +19,6 @@ $password_encrypted = password($password_plain);
         <a class="w3-btn w3-teal" href="admin/public_html/">Admin</a> |
         <a class="w3-btn w3-purple" href="developer/public_html/">Developer</a> |
         <a class="w3-btn w3-yellow" href="info.php">PHP Info</a> |
-        <a class="w3-btn w3-yellow" href="messages.log">Messages</a> |
         <a class="w3-btn w3-red" href="autolog.php">AutoLog</a> |
     </div>
     <div class="w3-padding">
@@ -27,7 +26,7 @@ $password_encrypted = password($password_plain);
         <strong>Plain Password</strong>: <?php echo $password_plain; ?><br />
         <strong>Encrypted Password</strong>: <?php echo $password_encrypted; ?><br />
         <br />
-        <strong>SQLs</strong>:<br />
+        <strong>SQLs to Reset Passwords:</strong>:<br />
         UPDATE customers SET customer_password='<?php echo $password_encrypted; ?>';<br />
         UPDATE admin SET admin_password='<?php echo $password_encrypted; ?>';<br />
     </div>

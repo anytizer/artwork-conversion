@@ -56,4 +56,12 @@ class configTest extends TestCase
 
         $this->assertArrayHasKey("paypal", $finance);
     }
+
+    public function testArbitraryConfiguration()
+    {
+        $configs = new configs();
+        $config = $configs->section("config");
+
+        $this->assertArrayHasKey("key", $config);
+    }
 }
