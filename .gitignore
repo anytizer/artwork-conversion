@@ -15,3 +15,4 @@
 /store/sessions/sess_*
 /store/smarty/templates_c/*.php
 /vendor
+/python/
