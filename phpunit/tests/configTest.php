@@ -46,6 +46,8 @@ class configTest extends TestCase
         $this->assertArrayHasKey("customer", $websites);
         $this->assertArrayHasKey("developer", $websites);
         $this->assertArrayHasKey("hooks", $websites);
+        $this->assertArrayHasKey("investors", $websites);
+        $this->assertArrayHasKey("kpi", $websites);
         $this->assertArrayHasKey("www", $websites);
     }
 
@@ -63,5 +65,6 @@ class configTest extends TestCase
         $config = $configs->section("config");
 
         $this->assertArrayHasKey("key", $config);
+        $this->assertArrayHasKey("live", $config);
     }
 }
