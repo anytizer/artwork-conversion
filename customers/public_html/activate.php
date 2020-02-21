@@ -13,7 +13,7 @@ $customerdto = $customer->single($id);
 
 if($customerdto->id)
 {
-    if($activated = $customer->activate($customerdto->id, $code))
+    if($customer->activate($customerdto->id, $code))
     {
         $_SESSION["customer"] = $customerdto->id;
         $_SESSION["name"] = $customerdto->name;

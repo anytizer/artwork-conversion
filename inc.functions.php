@@ -36,7 +36,7 @@ function password($something="")
 
 /**
  * @param string $id
- * @return string|string[]|null
+ * @return string
  */
 function id($id="")
 {

@@ -77,7 +77,7 @@ class email extends PHPMailer
 
         $find = array(
             "{CUSTOMER}" => $customer->name,
-            "{ACTIVATION_LINK}" => "{$websites['hooks']}/activate.php?id={$customer->id}&code={$customer->code}",
+            "{ACTIVATION_LINK}" => "{$websites['customer']}/activate.php?id={$customer->id}&code={$customer->code}",
             "{EMAIL}" => $customer->email,
             "{PASSWORD}" => $password_plain,
             "{COMPANY}" => $company["name"],

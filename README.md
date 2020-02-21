@@ -16,3 +16,6 @@ Configure *configs.ini*.
 
 # Database
 /store/database/slicing.db
+
+# Help Wanted
+Please review [todo.md](todo.md) to sort them out.

@@ -37,9 +37,11 @@ class work extends database
     
     public function works($project_id="")
     {
-        $works_sql="SELECT * FROM works;";
+        $work_active = "1";
+        $works_sql="SELECT * FROM works WHERE work_active=:work_active;";
         
         $statement = $this->database->prepare($works_sql);
+        $statement->bindParam(":work_active", $work_active, SQLITE3_TEXT);
         $result = $statement->execute();
         
         $works = [];

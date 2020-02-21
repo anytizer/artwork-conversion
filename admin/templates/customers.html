@@ -35,6 +35,8 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Projects</th>
+                    <th>Dues</th>
+                    <th>Paid</th>
                 </tr>
                 </thead>
                 <tbody class="w3-white">
@@ -44,6 +46,8 @@
                     <td><a href="customer.php?id={$customer->id}">{$customer->name}</a></td>
                     <td>{$customer->email|safe}</td>
                     <td><a href="projects.php?customer={$customer->id}">{$customer->total}</a></td>
+                    <td>{0.00|currency}</td>
+                    <td>{0.00|currency}</td>
                 </tr>
                 {foreachelse}
                 <tr>

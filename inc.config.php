@@ -57,4 +57,3 @@ $smarty->assign("company", $company);
 $smarty->assign("websites", $websites);
 $smarty->assign("finance", $finance);
 $smarty->assign("config", $config);
-#$smarty->assign("current_year", date("Y"));

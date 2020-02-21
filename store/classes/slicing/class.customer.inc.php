@@ -110,7 +110,9 @@ WHERE
         $statement->bindParam(":customer_code", $customer_code, SQLITE3_TEXT);
         $statement->bindParam(":customer_active", $customer_active, SQLITE3_TEXT);
         $result = $statement->execute();
-        return $result!=false;
+
+        return $this->database->changes() == 1;
+        // return $result!=false;
     }
     
     public function login(logindto $login): bool

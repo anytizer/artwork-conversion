@@ -12,4 +12,6 @@ class userdto
     
     public $onboarded; // Developer Flag
     public $total; // Customer's projects count
+    public $dues; // total dues of a customer
+    public $paid; // total amount paid by customer
 }
