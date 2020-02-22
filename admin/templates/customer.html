@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$company['name']} - {$company['title']}</title>
+    <meta name="description" content="{$company['description']}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="{$websites['assets']}/css/w3.css" />
+    <link rel="stylesheet" href="{$websites['assets']}/css/admin.css" />
+</head>
+<body class="admin-projects">
+    <div class="w3-container w3-teal">
+        <div class="w3-row">
+            <div class="w3-col l6 s12">
+                <h1><a href="index.php">{$company['name']}</a></h1>
+            </div>
+            <div class="w3-col l6 s12">
+                <div class="w3-right">
+                    <a href="logout.php" class="w3-btn w3-white">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-light-gray">
+        <div class="w3-row">
+            <div class="w3-col l2 s12 w3-panel">
+                {include file="includes/inc.menus.html"}
+            </div>
+            <div class="w3-col l10 s12 w3-panel">
+                <h1>{$customer->name}</h1>
+                <p class="w3-padding w3-teal">Projects: {$statistics["total"]} | Dues: {$statistics["dues"]|currency} | Paid: {$statistics["paid"]|currency}</p>
+                <h2>Projects</h2>
+                <table class="w3-table w3-bordered w3-striped w3-border">
+                    <thead class="w3-teal">
+                    <tr>
+                        <th>SN</th>
+                        <th>Project Name</th>
+                        <th>Dues</th>
+                        <th>Paid</th>
+                        <th>Opened On</th>
+                    </tr>
+                    </thead>
+                    <tbody class="w3-white">
+                    {foreach from=$projects key="p" item="project"}
+                    <tr>
+                        <td>{$p+1}</td>
+                        <td><a href="project.php?id={$project->id}">{$project->name}</a></td>
+                        <td>{$project->budget|currency}</td>
+                        <td>{$project->paid|currency}</td>
+                        <td>{$project->date}</td>
+                    </tr>
+                    {foreachelse}
+                    <tr>
+                        <td colspan="4">No projects.</td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container w3-white">
+        {include file="includes/inc.footer.html"}
+    </div>
+</body>
+</html>

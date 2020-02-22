@@ -84,7 +84,7 @@ GROUP BY
     
     public function maintenance()
     {
-        //
+        // delete from customers where customer_id not in (select customer_id from projects);
     }
     
     public function activate($customer_id="", $customer_code=""): bool
@@ -188,5 +188,23 @@ WHERE
         $userdto->active = $row["customer_active"];
 
         return $userdto;
+    }
+
+    public function statistics(userdto $customerdto)
+    {
+        $projects_counter_sql="SELECT COUNT(*) total, SUM(project_budget) dues, SUM(project_paid) paid FROM projects WHERE customer_id=:customer_id;";
+        $statement = $this->database->prepare($projects_counter_sql);
+        $statement->bindParam(":customer_id", $customerdto->id, SQLITE3_TEXT);
+        $result = $statement->execute();
+
+        $statistics = $result->fetchArray(SQLITE3_ASSOC);
+
+//        $statistics = [
+//            "total" => 89,
+//            "dues" => 99.99,
+//            "paid" => 100.00,
+//        ];
+
+        return $statistics;
     }
 }

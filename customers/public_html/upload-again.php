@@ -3,12 +3,12 @@ namespace customers;
 
 require_once "../inc.config.php";
 
+use demo\provider;
 use \dtos\projectdto;
 use \dtos\userdto;
 use \slicing\email;
 use \slicing\project;
 use \slicing\fileuploader;
-use anytizer\guid;
 
 $artworks = [];
 $fname = "concepts";
@@ -20,11 +20,13 @@ if(!empty($_FILES[$fname]["name"][0]))
 else
 {
     #print_r($_FILES[$fname]);
-    die("Artwork not uploaded Or, too big file.");
+    die("Artwork not uploaded, Or too big file.");
 }
 
+$provider = new provider();
+
 $projectdto = new projectdto();
-$projectdto->id = (new Guid())->NewGuid();
+$projectdto->id = $provider->id();
 #$projectdto->customer = $customerdto->id;
 $projectdto->name = $_FILES[$fname]["name"][0]." - ".mt_rand(1000, 9999);
 $projectdto->date = date("Y-m-d H:i:s");
