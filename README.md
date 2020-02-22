@@ -2,6 +2,9 @@
 A communication tool for customer, developer and admin - to convert an artwork into website or software.
 
 # Installation
+* Checkout the project in /home/[USER]/subdomains/
+* Point the following subdomains.
+
 Set the following subdirectories into your subdomains:
  * admin.example.com => *admin/public_html*
  * api.example.com => *api/public_html*
@@ -11,8 +14,7 @@ Set the following subdirectories into your subdomains:
  * hooks.example.com => *hooks/public_html*
  * www.example.com => *www/public_html*
 
-Copy sample.ini into configs.ini.
-Configure *configs.ini*.
+Copy sample.ini into configs.ini. And, configure [configs.ini](configs.ini).
 
 # Database
 /store/database/slicing.db
