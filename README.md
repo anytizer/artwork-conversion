@@ -20,4 +20,5 @@ Copy sample.ini into configs.ini. And, configure [configs.ini](configs.ini).
 /store/database/slicing.db
 
 # Help Wanted
-Please review [todo.md](todo.md) to sort them out.
+* Please review [todo.md](todo.md) to sort them out.
+* Also, there are @todo tags within the source code.
