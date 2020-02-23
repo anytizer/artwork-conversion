@@ -5,8 +5,8 @@ require_once "../inc.config.php";
 
 use \slicing\maintenance;
 
-$maintenace = new maintenance();
-$results = $maintenace->maintain();
+$maintenance = new maintenance();
+$results = $maintenance->maintain();
 
 $smarty->assign("results", $results);
 $smarty->display("maintenance.html");

@@ -58,9 +58,14 @@ class maintenance extends database
         return $maintenance;
     }
 
-    # @todo Only on demo servers
     public function borrow($customer_id=""): bool
     {
+        if(__LIVE__)
+        {
+            # Run only on demo servers
+            return false;
+        }
+
         $customer_id = id($customer_id);
         $borrow_sql="UPDATE projects SET customer_id=:customer_id;";
         
@@ -69,6 +74,5 @@ class maintenance extends database
         $result = $statement->execute();
         
         return $result != false;
-        
     }
 }

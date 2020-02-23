@@ -90,4 +90,17 @@ class provider
 
         return $statuses;
     }
+
+    public function termination_reasons()
+    {
+        $reasons = [
+            "0" => "Active",
+            "1" => "Beyond Capacity",
+            "2" => "Customer Won't Pay",
+            "3" => "Refunded",
+            "4" => "Project Successful",
+        ];
+
+        return $reasons;
+    }
 }
