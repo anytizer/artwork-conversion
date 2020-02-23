@@ -2,10 +2,9 @@
 namespace tests;
 
 use \dtos\infodto;
-use \slicing\provider;
 use \slicing\info;
 use \slicing\configs;
-use \anytizer\guid;
+use \demo\provider;
 use PHPUnit\Framework\TestCase;
 
 class infoTest extends TestCase
@@ -19,10 +18,11 @@ class infoTest extends TestCase
 
     public function testCreateInfo1()
     {
+        $provider = new provider();
         $company = (new configs())->section("company");
 
         $infodto = new infodto();
-        $infodto->id = (new guid())->NewGuid();
+        $infodto->id = $provider->id();
         $infodto->company = $company["name"];
         $infodto->phone = $company["phone"];
         $infodto->email = $company["email"];

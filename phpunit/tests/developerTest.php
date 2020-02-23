@@ -22,7 +22,7 @@ class developerTest extends TestCase
         $password_plain = password_plain();
         
         $userdto = new userdto();
-        $userdto->id = (new guid())->NewGuid();
+        $userdto->id = $provider->id();
         $userdto->name = $provider->name();
         $userdto->email = "{$userdto->id}@example.com";
         $userdto->password = password($password_plain);

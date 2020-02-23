@@ -3,13 +3,13 @@ namespace customers;
 
 require_once "../inc.config.php";
 
+use \demo\provider;
 use \dtos\userdto;
 use \dtos\projectdto;
 use \slicing\email;
 use \slicing\fileuploader;
 use \slicing\customer;
 use \slicing\project;
-use anytizer\guid;
 
 $artworks = [];
 $fname = "concepts";
@@ -38,7 +38,7 @@ if(!$_POST["email"])
 $password_plain = password_plain();
 
 $userdto = new userdto();
-$userdto->id = $_SESSION["customer"]??(new guid())->NewGuid();
+$userdto->id = $_SESSION["customer"]??$provider->id();
 $userdto->name = $_POST["fullname"];
 $userdto->email = $_POST["email"];
 $userdto->password = password($password_plain);
@@ -55,16 +55,15 @@ if(empty($_SESSION["customer"]))
     }
     else
     {
-        # @todo Send an email asking to activate the customer profile/email.
-        # file_put_contents(__ROOT__."/activate.log", "\r\n{$websites['hooks']}/activate.php?code={$userdto->code}", FILE_APPEND);
-
         $mailer = new email();
         $mailer->activate_customer($userdto, $password_plain);
     }
 }
 
+$provider = new provider();
+
 $projectdto = new projectdto();
-$projectdto->id = (new guid())->NewGuid();
+$projectdto->id = $provider->id();
 #$projectdto->customer = $userdto->id;
 $projectdto->name = $_FILES[$fname]["name"][0]." - ".mt_rand(1000, 9999);
 $projectdto->date = date("Y-m-d H:i:s");

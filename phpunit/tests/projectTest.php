@@ -1,12 +1,11 @@
 <?php
 namespace tests;
 
+use demo\provider;
 use \dtos\userdto;
 use \dtos\projectdto;
-use \slicing\customer;
 use \slicing\project;
 use \slicing\hook;
-use anytizer\guid;
 use PHPUnit\Framework\TestCase;
 
 class projectTest extends TestCase
@@ -25,8 +24,10 @@ class projectTest extends TestCase
     
     public function testCreateProject()
     {
+        $provider = new provider();
+
         $userdto = new userdto();
-        $userdto->id = (new guid())->NewGuid();
+        $userdto->id = $provider->id();
         $userdto->name = "Customer Name";
         $userdto->email = "john.doe@example.com";
         $userdto->password = password_plain();
@@ -34,7 +35,7 @@ class projectTest extends TestCase
         $userdto->active = "1";
         
         $projectdto = new projectdto();
-        $projectdto->id = (new guid())->NewGuid();
+        $projectdto->id = $provider->id();
         #$projectdto->customer = $userdto->id;
         $projectdto->name = "My Project - ".mt_rand(1000, 9999);
         $projectdto->date = date("Y-m-d H:i:s");

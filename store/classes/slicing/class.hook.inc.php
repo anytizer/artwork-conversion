@@ -1,8 +1,8 @@
 <?php
 namespace slicing;
 
+use demo\provider;
 use \slicing\database;
-use anytizer\guid;
 
 class hook extends database
 {
@@ -22,8 +22,9 @@ INSERT INTO payments (
     :payment_from
 );";
         #echo $insert_sql;
-        
-        $payment_id = (new guid())->NewGuid();
+
+        $provider = new provider();
+        $payment_id = $provider->id();
         $payment_on = date("Y-m-d H:i:s");
         $statement = $this->database->prepare($insert_sql);
         $statement->bindParam(":payment_id", $payment_id, SQLITE3_TEXT);

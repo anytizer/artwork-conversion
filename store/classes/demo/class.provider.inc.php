@@ -9,41 +9,33 @@ class provider
     private function firstname()
     {
         $data = ["David", "Ronda", "John", "Jane", "James", "Maria"];
-        $random = $data[array_rand($data)];
-        
-        return $random;
+        return $data[array_rand($data)];
     }
     
     private function lastname()
     {
         $data = ["Buttler", "Blunt", "Chad", "Wild", "Hunter", "Thumpson"];
-        $random = $data[array_rand($data)];
-        
-        return $random;
+        return $data[array_rand($data)];
     }
     
     public function name()
     {
-        $name = $this->firstname()." ".$this->lastname();
-        return $name;
+        return $this->firstname()." ".$this->lastname();
     }
     
     public function email()
     {
-        $email = $this->id()."@example.com";
-        return $email;
+        return $this->id()."@example.com";
     }
     
     public function code()
     {
-        $code = md5(password_plain());
-        return $code;
+        return md5(password_plain());
     }
     
     public function id()
     {
-        $id = (new guid())->NewGuid();
-        return $id;
+        return (new guid())->NewGuid();
     }
     
     public function phonenumber()
@@ -51,9 +43,7 @@ class provider
         $a = mt_rand(100, 999);
         $b = mt_rand(100, 999);
         $c = mt_rand(1000, 9999);
-        $phonenumber = "{$a}-{$b}-{$c}";
-        
-        return $phonenumber;
+        return "{$a}-{$b}-{$c}";
     }
 
     /**
@@ -64,7 +54,7 @@ class provider
         $password_plain = password_plain();
         
         $userdto = new userdto();
-        $userdto->id = (new guid())->NewGuid();
+        $userdto->id = $this->id();
         $userdto->name = $this->name();
         $userdto->email = "{$userdto->id}@example.com";
         $userdto->password = password($password_plain);
@@ -81,26 +71,22 @@ class provider
 
     public function statuses()
     {
-        $statuses = [
+        return [
             "New Project",
             "In Dues",
             "Paid",
             "Terminated",
         ];
-
-        return $statuses;
     }
 
     public function termination_reasons()
     {
-        $reasons = [
+        return [
             "0" => "Active",
             "1" => "Beyond Capacity",
             "2" => "Customer Won't Pay",
             "3" => "Refunded",
             "4" => "Project Successful",
         ];
-
-        return $reasons;
     }
 }

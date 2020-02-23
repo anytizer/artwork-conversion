@@ -1,6 +1,7 @@
 <?php
 namespace slicing;
 
+use demo\provider;
 use \dtos\userdto;
 use \dtos\projectdto;
 use \dtos\estimationdto;
@@ -194,6 +195,8 @@ class project extends database
     
     public function estimate($project_id="", $project_budget=0.00, $estimated_notes="")
     {
+        $provider = new provider();
+
         $estimate_project_sql="UPDATE projects SET project_budget=:project_budget WHERE project_id=:project_id LIMIT 1;";
         $statement = $this->database->prepare($estimate_project_sql);
         $statement->bindParam(":project_id", $project_id, SQLITE3_TEXT);
@@ -202,7 +205,7 @@ class project extends database
         
         $estimations_sql="INSERT INTO estimations (estimation_id, project_id, estimated_on, estimated_budget, estimated_notes) VALUES (:estimation_id, :project_id, :estimated_on, :estimated_budget, :estimated_notes);";
         $statement = $this->database->prepare($estimations_sql);
-        $estimation_id = (new guid())->NewGuid();
+        $estimation_id = $provider->id();
         $estimated_on = date("Y-m-d H:i:s");
         $statement->bindParam(":estimation_id", $estimation_id, SQLITE3_TEXT);
         $statement->bindParam(":project_id", $project_id, SQLITE3_TEXT);
@@ -242,6 +245,8 @@ class project extends database
     
     public function terminate(projectdto $projectdto, $reason=0): bool
     {
+        $provider = new provider();
+
         $update_project_sql="UPDATE projects SET project_terminated=:project_terminated, project_active=0 WHERE project_id=:project_id;";
         $statement = $this->database->prepare($update_project_sql);
         $statement->bindParam(":project_id", $projectdto->id, SQLITE3_TEXT);
@@ -249,7 +254,7 @@ class project extends database
         $result = $statement->execute();
         
         $terminationdto = new terminationdto();
-        $terminationdto->id = (new guid())->NewGuid();
+        $terminationdto->id = $provider->id();
         $terminationdto->project = $projectdto->id;
         $terminationdto->reason = $reason;
         $terminationdto->date = date("Y-m-d H:i:s");

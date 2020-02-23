@@ -3,14 +3,16 @@ namespace admin;
 
 require_once "../inc.config.php";
 
+use demo\provider;
 use \dtos\userdto;
 use \slicing\developer;
 use anytizer\guid;
 
+$provider = new provider();
 $password_plain = password_plain();
 
 $userdto = new userdto();
-$userdto->id = (new guid())->NewGuid();
+$userdto->id = $provider->id();
 $userdto->name = $_POST["developer"]["name"];
 $userdto->email = $_POST["developer"]["email"];
 $userdto->password = password($password_plain);

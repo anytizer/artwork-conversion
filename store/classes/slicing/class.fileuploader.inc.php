@@ -1,18 +1,20 @@
 <?php
 namespace slicing;
 
+use demo\provider;
 use \dtos\filedto;
-use \anytizer\guid;
 
 class fileuploader
 {
     public function upload($fname="concepts", $artwork_path="/tmp")
     {
+        $provider = new provider();
+
         $date = date("Y-m-d H:i:s");
         $artworks = array();
         foreach($_FILES[$fname]["tmp_name"] as $index => $tmp_name)
         {
-            $id = (new guid())->NewGuid();
+            $id = $provider->id();
             $project = "";
             $name  = $_FILES[$fname]["name"][$index];
             $type = $_FILES[$fname]["type"][$index];
