@@ -9,7 +9,6 @@ use \dtos\paymentdto;
 use \dtos\terminationdto;
 use \dtos\filedto;
 use \slicing\database;
-use anytizer\guid;
 
 class project extends database
 {
@@ -197,7 +196,8 @@ class project extends database
     {
         $provider = new provider();
 
-        $estimate_project_sql="UPDATE projects SET project_budget=:project_budget WHERE project_id=:project_id LIMIT 1;";
+        # $estimate_project_sql="UPDATE projects SET project_budget=:project_budget WHERE project_id=:project_id LIMIT 1;";
+        $estimate_project_sql="UPDATE projects SET project_budget=project_budget+:project_budget WHERE project_id=:project_id LIMIT 1;";
         $statement = $this->database->prepare($estimate_project_sql);
         $statement->bindParam(":project_id", $project_id, SQLITE3_TEXT);
         $statement->bindParam(":project_budget", $project_budget, SQLITE3_TEXT);        

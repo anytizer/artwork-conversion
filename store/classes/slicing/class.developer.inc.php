@@ -81,7 +81,6 @@ class developer extends database
         $result = $statement->execute();
         while($row = $result->fetchArray(SQLITE3_ASSOC))
         {
-            # @Todo DTO Conversion
             $userdto = new userdto();
             $userdto->id = $row["developer_id"];
             $userdto->name = $row["developer_name"];

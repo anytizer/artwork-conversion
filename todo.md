@@ -1,6 +1,7 @@
 # ToDo
 
-* Implement Project Status ID - statuses
+* Estimation should be cumulative.
+* Implement Project Status ID - statuses.
 * Redirect the autolog into proper link with baseurl.
 * Activate customer and upload_again artwork should send similar email contents.
 

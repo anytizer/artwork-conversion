@@ -35,13 +35,12 @@ class customer extends database
     
     private function unique($customer_email=""): bool
     {
-        $uniqueness_sql = "SELECT * FROM customers WHERE customer_email=:customer_email;";
+        $uniqueness_sql = "SELECT COUNT(*) total FROM customers WHERE customer_email=:customer_email;";
         $statement = $this->database->prepare($uniqueness_sql);
         $statement->bindParam(":customer_email", $customer_email, SQLITE3_TEXT);
-        # @todo Unique email address using the database lookup
-        # if email exists: return false
-        $exists = false;
-        return !$exists;
+        $result = $statement->execute();
+        $row = $result->fetchArray(SQLITE3_ASSOC);
+        return $row["total"] == 1;
     }
 
     public function get_all_active_customers()
@@ -49,7 +48,7 @@ class customer extends database
         $customers = [];
 
         $all_sql="
-        SELECT
+SELECT
 	c.customer_id id,
 	c.customer_name `name`,
 	c.customer_email email,
@@ -65,7 +64,6 @@ GROUP BY
         $result = $statement->execute();
         while($row = $result->fetchArray(SQLITE3_ASSOC))
         {
-            # @Todo DTO Conversion
             $userdto = new userdto();
             $userdto->id = $row["id"];
             $userdto->name = $row["name"];
@@ -89,8 +87,7 @@ GROUP BY
     
     public function activate($customer_id="", $customer_code=""): bool
     {
-        # @ToDo bind to single transaction
-        # @todo Reset the code
+        # @todo Reset the code: bind to single transaction
         $customer_active = "1";
         $customer_new_code = md5(password_plain());
 
@@ -117,7 +114,6 @@ WHERE
     
     public function login(logindto $login): bool
     {
-        # @todo Hash match password
         $customer_active = "1";
         $login_sql="SELECT COUNT(*) total FROM customers WHERE customer_email=:customer_email AND customer_active=:customer_active;";
         $statement = $this->database->prepare($login_sql);
