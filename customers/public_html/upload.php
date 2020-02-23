@@ -35,6 +35,7 @@ if(!$_POST["email"])
 # email customer
 # email admin
 
+$provider = new provider();
 $password_plain = password_plain();
 
 $userdto = new userdto();
@@ -59,8 +60,6 @@ if(empty($_SESSION["customer"]))
         $mailer->activate_customer($userdto, $password_plain);
     }
 }
-
-$provider = new provider();
 
 $projectdto = new projectdto();
 $projectdto->id = $provider->id();

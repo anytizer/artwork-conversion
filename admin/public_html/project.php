@@ -11,12 +11,12 @@ if(empty($_GET["id"]))
     die("Invalid Project ID.");
 }
 
-$project_id = $_GET["id"];
+$project_id = id($_GET["id"]);
 
 $project = (new project())->single($project_id);
 #print_r($project);
 
-# List of artwrok attached to a project
+# List of artwork attached to a project
 $artworks = (new project())->artworks($project_id);
 #print_r($artworks);
 
