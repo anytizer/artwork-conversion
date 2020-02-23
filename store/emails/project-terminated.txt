@@ -2,5 +2,7 @@ Dear {CUSTOMER},
 Your project is terminated.
 {PROJECT}
 
+If you think, this happened in an error, please promptly notify your project manager.
+
 Regards,
 {COMPANY} Team
