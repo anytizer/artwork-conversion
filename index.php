@@ -18,7 +18,7 @@ $password_encrypted = password($password_plain);
     <div class="w3-black w3-padding w3-border-bottom">
         <a class="w3-btn w3-blue" href="customers/public_html/">Customer</a>
         <a class="w3-btn w3-teal" href="admin/public_html/">Admin</a>
-        <a class="w3-btn w3-purple" href="developer/public_html/">Dev</a>
+        <a class="w3-btn w3-purple" href="developer/public_html/">Developer</a>
     </div>
     <div class="w3-black w3-padding">
         <a class="w3-btn w3-yellow" href="install.php">Install</a>

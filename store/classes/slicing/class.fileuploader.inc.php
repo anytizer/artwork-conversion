@@ -70,8 +70,7 @@ class fileuploader
         $files = glob($pattern);
         #print_r($files); die();
         $files = array_map(function($path){
-            $deleted = unlink($path);
-            return $deleted;
+            return unlink($path);
         }, $files);
         
         return $files;
