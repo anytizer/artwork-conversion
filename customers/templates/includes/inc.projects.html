@@ -15,6 +15,7 @@
     <th>Dues<!-- Budget --></th>
     <th>Paid</th>
     <th>Opened On</th>
+    <th>Status</th>
 </tr>
 </thead>
 <tbody class="w3-white">
@@ -25,10 +26,11 @@
     <td>{$project->budget|currency}</td>
     <td>{$project->paid|currency}</td>
     <td>{$project->date}</td>
+    <td>{$project->terminated|termination_reason}</td>
 </tr>
 {foreachelse}
 <tr>
-    <td colspan="5">Projects not found.</td>
+    <td colspan="6">Projects not found.</td>
 </tr>
 {/foreach}
 </tbody>

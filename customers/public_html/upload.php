@@ -86,4 +86,4 @@ $project->attach_artwork($projectdto, $artworks);
 $_SESSION["customer"] = $userdto->id;
 $_SESSION["name"] = $userdto->name;
 
-header("Location: projects-recent.php");
+header("Location: projects.php");

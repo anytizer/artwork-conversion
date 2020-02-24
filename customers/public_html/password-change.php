@@ -57,4 +57,4 @@ Array
 */
 
 #header("Location: project.php?id={$projectdto->id}");
-#header("Location: projects-recent.php");
+#header("Location: projects.php");

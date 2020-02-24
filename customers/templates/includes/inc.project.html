@@ -79,6 +79,7 @@
     </tbody>
 </table>
 
+{if $project->terminated == "0"}
 <br />
 <h3>Additional Attachments</h3>
 <form name="upload" method="post" action="upload-attachment.php" enctype="multipart/form-data">
@@ -86,8 +87,10 @@
     <input type="hidden" name="project" value="{$project->id}" />
     <input type="submit" name="upload" value="Attach" class="w3-btn w3-blue" />
 </form>
-
 <p>Please inform your project manager after you attach a new file.</p>
+{else}
+<p>You cannot attach supplement artworks to a terminated project.</p>
+{/if}
 
 <p>&nbsp;</p>
 

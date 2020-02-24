@@ -35,4 +35,4 @@ $project->attach_artwork($projectdto, $artworks);
 # @todo Send an email to the admin
 
 header("Location: project.php?id={$projectdto->id}");
-#header("Location: projects-recent.php");
+#header("Location: projects.php");

@@ -27,4 +27,4 @@ $informed = $email->terminate_project($project_id);
 
 #print_r($projectdto);
 #die("Terminated!");
-header("Location: projects-recent.php");
+header("Location: projects.php");
